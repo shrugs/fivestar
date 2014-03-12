@@ -5,7 +5,7 @@ angular.module('fiveStarApp')
 
     $scope.state = {
         query: $routeParams.query || '',
-        index: $routeParams.index || '1',
+        index: $routeParams.index || 'All',
         node: parseInt($routeParams.node, 10) || undefined,
         brand: $routeParams.brand
     };
