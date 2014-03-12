@@ -10,10 +10,20 @@
 </div>
 
 <div class="row marketing">
-  <div ng-repeat="thing in awesomeThings">
-      <h4>{{thing.name}}</h4>
-      <p>{{thing.info}}</p>
-  </div>
+    <input type="text" ng-model="state.query" placeholder="query">
+    <select ng-model="state.index">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <input type="number" ng-model="state.node" placeholder="node">
+    <select ng-model="state.brand">
+        <option value="Brand1">Brand1</option>
+        <option value="Brand2">Brand2</option>
+        <option value="Brand3">Brand3</option>
+        <option value="Brand4">Brand4</option>
+    </select>
 </div>
 
 <div class="footer">
