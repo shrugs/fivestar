@@ -1,20 +1,19 @@
 'use strict';
 
 angular.module('fiveStarApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute'
-])
-  .config(function ($routeProvider, $locationProvider) {
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngRoute'
+]).config(function ($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/', {
+    .when('/', {
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
-      })
-      .otherwise({
+    })
+    .otherwise({
         redirectTo: '/'
-      });
-      
+    });
+
     $locationProvider.html5Mode(true);
-  });
+});
