@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('fiveStarApp')
-.controller('MainCtrl', function ($scope, $routeParams, $location) {
+.controller('MainCtrl', function ($scope, $routeParams, $location, debounce) {
 
     $scope.state = {
         query: $routeParams.query || '',
         index: $routeParams.index || '1',
-        node: parseInt($routeParams.node, 10),
+        node: parseInt($routeParams.node, 10) || undefined,
         brand: $routeParams.brand
     };
     $scope.previousStates = [angular.copy($scope.state)];
@@ -46,6 +46,14 @@ angular.module('fiveStarApp')
             $location.search(k, v);
         });
 
+        // swag, now call getData
+        $scope.getData();
+
     }, true);
+
+
+    $scope.getData = debounce(500, function() {
+
+    });
 
 });

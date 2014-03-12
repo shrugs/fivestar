@@ -4,7 +4,8 @@ angular.module('fiveStarApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'rt.debounce'
 ]).config(function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
