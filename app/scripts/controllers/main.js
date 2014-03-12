@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fiveStarApp')
-.controller('MainCtrl', function ($scope, $routeParams, $location, debounce) {
+.controller('MainCtrl', function ($scope, $routeParams, $location, debounce, Search) {
 
     $scope.state = {
         query: $routeParams.query || '',
@@ -10,6 +10,9 @@ angular.module('fiveStarApp')
         brand: $routeParams.brand
     };
     $scope.previousStates = [angular.copy($scope.state)];
+
+    $scope.loading = false;
+
 
     $scope.$watch('state', function() {
         // update URL on state change and save to previousStates
@@ -53,7 +56,11 @@ angular.module('fiveStarApp')
 
 
     $scope.getData = debounce(500, function() {
+        // pass the state to the backend to get the data
 
+        $scope.loading = true;
+        $scope.results = undefined;
+        $scope.results = Search.get($scope.state);
     });
 
 });
