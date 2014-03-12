@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('fiveStarApp')
-.controller('MainCtrl', function ($scope, $routeParams) {
+.controller('MainCtrl', function ($scope, $routeParams, $location) {
 
     $scope.state = {
         query: $routeParams.query || '',
         index: $routeParams.index || '1',
-        node: $routeParams.node,
+        node: parseInt($routeParams.node, 10),
         brand: $routeParams.brand
     };
     $scope.previousStates = [angular.copy($scope.state)];
@@ -40,6 +40,11 @@ angular.module('fiveStarApp')
         if (newState) {
             $scope.previousStates.push(angular.copy($scope.state));
         }
+
+        // now sync the state to the url
+        angular.forEach($scope.state, function(v, k) {
+            $location.search(k, v);
+        });
 
     }, true);
 
