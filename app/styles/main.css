@@ -4,4 +4,16 @@
 
 .input-group .btn.dropdown-toggle.selectpicker {
     border-radius: 17px 0 0 17px;
+    border-right: none;
+}
+
+.dropdown-menu li a {
+    padding: 0px 20px;
+}
+
+.bootstrap-select .btn:focus {
+    outline: none !important;
+    background-color: #FFFFFF;
+    color: #434a54;
+    outline-offset: 0;
 }
