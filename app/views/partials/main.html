@@ -55,7 +55,7 @@
 <div class="row filter-block" ng-show="results && !loading">
     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
         <h5 class="narrow-by-header">Narrow Search By:</h5>
-        <div class="btn-group" ng-repeat="section in results.narrowNodes">
+        <div class="btn-group node-cont" ng-repeat="section in results.narrowNodes">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                 {{section['@'].NarrowBy | prettyNodeName}}
                 <span class="caret"></span>
