@@ -73,4 +73,15 @@ angular.module('fiveStarApp')
         });
     });
 
+
+    $scope.selectBin = function(bin) {
+        if (bin.Name === 'Brand') {
+            $scope.state.brand = bin.Value;
+        } else if (bin.Name === 'BrowseNode') {
+            $scope.state.node = bin.Value;
+        } else if (bin.Name === 'SearchIndex') {
+            $scope.state.index = bin.Value;
+        }
+    };
+
 });
