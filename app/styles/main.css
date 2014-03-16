@@ -17,3 +17,8 @@
     color: #434a54;
     outline-offset: 0;
 }
+
+.narrow-by-header {
+    display: inline;
+    margin-right: 20px;
+}

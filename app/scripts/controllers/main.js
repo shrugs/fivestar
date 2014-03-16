@@ -62,10 +62,14 @@ angular.module('fiveStarApp')
         $scope.loading = true;
         $scope.results = undefined;
         ngProgress.start();
-        $scope.results = Search.get($scope.state).$promise.then(function() {
+        $scope.results = Search.get($scope.state);
+        $scope.results.$promise.then(function() {
             ngProgress.complete();
+            $scope.loading = false;
+            console.log($scope.results);
         }, function() {
             console.log('SHIT');
+            $scope.loading = false;
         });
     });
 
