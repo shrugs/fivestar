@@ -1,3 +1,7 @@
 .header {
     margin-top: 40px;
 }
+
+.input-group .btn.dropdown-toggle.selectpicker {
+    border-radius: 17px 0 0 17px;
+}
