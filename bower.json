@@ -11,11 +11,16 @@
     "angular-cookies": "1.2.11",
     "angular-sanitize": "1.2.11",
     "angular-route": "1.2.11",
-    "angular-debounce": "~0.0.2"
+    "angular-debounce": "~0.0.2",
+    "angular-bootstrap-select": "*",
+    "ngprogress": "~1.0.4"
   },
   "devDependencies": {
     "angular-mocks": "1.2.11",
     "angular-scenario": "1.2.11"
   },
-  "testPath": "test/client/spec"
+  "testPath": "test/client/spec",
+  "resolutions": {
+    "angular": "1.2.11"
+  }
 }
