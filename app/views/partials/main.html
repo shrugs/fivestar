@@ -1,6 +1,18 @@
 <header class="row">
     <!-- HEADER w/ SEARCH BAR -->
-    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 header">
+        <div class="input-group form-search">
+            <span class="input-group-btn">
+                <select selectpicker ng-model="state.index">
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Relish</option>
+                </select>
+            </span>
+            <input type="text" class="form-control search-query">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary" data-type="last">Search</button>
+            </span>
+        </div>
     </div>
 </header>
