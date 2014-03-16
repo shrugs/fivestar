@@ -52,10 +52,10 @@
 </header>
 
 <!-- FILTER SECTION -->
-<div class="row" ng-show="results && !loading">
+<div class="row filter-block" ng-show="results && !loading">
     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
         <h5 class="narrow-by-header">Narrow Search By:</h5>
-        <select ng-repeat="section in results.narrowNodes" title="{{section['@'].NarrowBy | prettyNodeName}}" selectpicker>
+        <select ng-repeat="section in results.narrowNodes" title="{{section['@'].NarrowBy | prettyNodeName}}">
             <option ng-repeat="n in section.Bin | nodeSort | orderBy:'BinItemCount':true">{{n.BinName}} ({{n.BinItemCount}})</option>
         </select>
     </div>
