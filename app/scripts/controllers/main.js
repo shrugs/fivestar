@@ -61,6 +61,7 @@ angular.module('fiveStarApp')
     $scope.getData = debounce(500, function() {
         // pass the state to the backend to get the data
         $scope.canceler.resolve();
+        ngProgress.reset();
         $scope.canceler = $q.defer();
 
         $scope.loading = true;
