@@ -54,6 +54,10 @@
     height: 100%;
 }
 
+.bracket-price {
+    text-align: center;
+}
+
 /* XS */
 @media (max-width:767px) {
     .bracket-price {
