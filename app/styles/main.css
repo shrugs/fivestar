@@ -1,5 +1,5 @@
 .header {
-    margin-top: 40px;
+    margin-top: 5px;
 }
 
 .input-group .btn.dropdown-toggle.selectpicker {
@@ -66,6 +66,10 @@
 
 .new-price {
     color: #F6BB42;
+}
+
+.logo {
+    width: 100%;
 }
 
 /* XS */
