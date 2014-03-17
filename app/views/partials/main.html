@@ -74,7 +74,7 @@
         <div class="row" ng-repeat="bracket in results.results">
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bracket">
                 <!-- BRACKET -->
-                <h2 class="bracket-price" ng-show="bracket.items">{{(bracket.minPrice/100).toFixed(2)}}+</h2>
+                <h2 class="bracket-price" ng-show="bracket.items">${{bracket.minPrice/100}}+</h2>
             </div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 bracket">
                 <!-- Cards -->
