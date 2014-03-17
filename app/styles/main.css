@@ -86,7 +86,9 @@
 
 /* SM */
 @media (min-width:768px) {
-
+    .bracket-price {
+        font-size: 30px;
+    }
 }
 
 
