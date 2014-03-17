@@ -62,7 +62,7 @@
             </button>
             <ul class="dropdown-menu">
                 <li ng-repeat="n in section.Bin | nodeSort | orderBy:'BinItemCount':true">
-                    <a ng-click="selectBin(n.BinParameter)">{{n.BinName}} ({{n.BinItemCount}})</a>
+                    <a ng-click="selectBin(n.BinParameter)">{{n.BinName | prettyDeptName}} ({{n.BinItemCount}})</a>
                 </li>
             </ul>
         </div>
