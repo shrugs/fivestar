@@ -7,7 +7,8 @@ angular.module('fiveStarApp')
         query: $routeParams.query || '',
         index: $routeParams.index || 'All',
         node: parseInt($routeParams.node, 10) || undefined,
-        brand: $routeParams.brand
+        brand: $routeParams.brand,
+        onlyAmazon: $routeParams.onlyAmazon
     };
     $scope.previousStates = [angular.copy($scope.state)];
 
