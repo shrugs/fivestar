@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fiveStarApp')
-.controller('MainCtrl', function ($scope, $routeParams, $location, debounce, Search, ngProgress) {
+.controller('MainCtrl', function ($scope, $routeParams, $location, debounce, ngProgress, $http, $q) {
 
     $scope.state = {
         query: $routeParams.query || '',
@@ -15,6 +15,7 @@ angular.module('fiveStarApp')
     $scope.loading = false;
 
     ngProgress.color('#4FC1E9');
+    $scope.canceler = $q.defer();
 
     $scope.$watch('state', function() {
         // update URL on state change and save to previousStates
@@ -59,19 +60,24 @@ angular.module('fiveStarApp')
 
     $scope.getData = debounce(500, function() {
         // pass the state to the backend to get the data
+        $scope.canceler.resolve();
+        $scope.canceler = $q.defer();
 
         $scope.loading = true;
         $scope.results = undefined;
         ngProgress.start();
-        $scope.results = Search.get($scope.state);
-        $scope.results.$promise.then(function() {
+
+        $http.get('/api/search', {
+            params: $scope.state,
+            timeout: $scope.canceler.promise
+        }).success(function(data) {
+            $scope.results = data;
             ngProgress.complete();
             $scope.loading = false;
             console.log($scope.results);
-        }, function() {
-            console.log('SHIT');
-            $scope.loading = false;
         });
+
+
     });
 
 
