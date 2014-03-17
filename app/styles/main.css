@@ -27,6 +27,25 @@
     margin-top: 15px;
 }
 
+.results-block {
+    margin-top: 10px;
+}
+
 .node-cont {
     margin-right: 20px;
+}
+
+.item-price {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.item-new-price {
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+
+.item-list-price {
+    margin-top: 10px;
+    margin-bottom: 2px;
 }

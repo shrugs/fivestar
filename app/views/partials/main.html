@@ -68,3 +68,43 @@
           </div>
     </div>
 </div>
+
+<div class="row results-block" ng-show="results && !loading">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row" ng-repeat="bracket in results.results">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bracket">
+                <!-- BRACKET -->
+                <h2 class="bracket-price" data-fittext>{{bracket.minPrice}}+</h2>
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 bracket">
+                <!-- Cards -->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" ng-repeat="item in bracket.items">
+
+                        <div class="thumbnail">
+                            <span class="item-price">
+                                <h2 class="item-list-price">{{item.ItemAttributes.ListPrice.FormattedPrice}}</h2><h6 class="item-new-price text-muted" ng-show="item.OfferSummary.LowestNewPrice">({{item.OfferSummary.TotalNew}} new from {{item.OfferSummary.LowestNewPrice.FormattedPrice}})</h6>
+                            </span>
+                            <img ng-src="{{item.LargeImage.URL}}" width="{{item.LargeImage.Width['#']}}" height="{{item.LargeImage.Height['#']}}" class="item-img">
+                            <div class="caption">
+                                <h3>{{item.ItemAttributes.Title}}</h3>
+                                <div class="row">
+                                    <ul class="col-xs-11 col-xs-offset-1 col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1 ellipses">
+                                        <li ng-repeat="f in item.ItemAttributes.Feature track by $index">{{f}}</li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <a class="btn btn-success btn-block" ng-href="{{item.DetailPageURL}}" target="_blank">View on Amazon</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
