@@ -64,6 +64,10 @@
     margin-left: 15px;
 }
 
+.new-price {
+    color: #F6BB42;
+}
+
 /* XS */
 @media (max-width:767px) {
     .bracket-price {
