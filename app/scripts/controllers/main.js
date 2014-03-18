@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fiveStarApp')
-.controller('MainCtrl', function ($scope, $routeParams, $location, debounce, ngProgress, $http, $q) {
+.controller('MainCtrl', function ($scope, $routeParams, $location, debounce, ngProgress, $http, $q, $rootScope) {
 
     $scope.state = {
         query: $routeParams.query || '',
@@ -11,6 +11,7 @@ angular.module('fiveStarApp')
         onlyAmazon: $routeParams.onlyAmazon
     };
     $scope.previousStates = [angular.copy($scope.state)];
+    $scope.unsubRouteChange = function(){};
 
     $scope.loading = false;
 
@@ -47,9 +48,23 @@ angular.module('fiveStarApp')
             $scope.previousStates.push(angular.copy($scope.state));
         }
 
+        // unsub
+        $scope.unsubRouteChange();
+
         // now sync the state to the url
         angular.forEach($scope.state, function(v, k) {
             $location.search(k, v);
+        });
+        // resubscribe to urlChange
+        $scope.unsubRouteChange = $rootScope.$on('$routeChangeSuccess', function() {
+            // update state based on $routeParams
+            $scope.state = {
+                query: $routeParams.query || '',
+                index: $routeParams.index || 'All',
+                node: parseInt($routeParams.node, 10) || undefined,
+                brand: $routeParams.brand,
+                onlyAmazon: $routeParams.onlyAmazon
+            };
         });
 
         // swag, now call getData
