@@ -60,10 +60,7 @@ angular.module('fiveStarApp')
             $location.search(k, v);
         });
         // resubscribe to urlChange
-        $scope.unsubRouteChange = $rootScope.$on('$locationChangeSuccess', function() {
-            // update state based on $routeParams
-            $scope.syncFromURL();
-        });
+        $scope.unsubRouteChange = $rootScope.$on('$locationChangeSuccess', $scope.syncFromURL);
 
         // swag, now call getData
         $scope.getData();
