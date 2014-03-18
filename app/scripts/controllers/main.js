@@ -110,4 +110,15 @@ angular.module('fiveStarApp')
         }
     };
 
+    $scope.arrayIfNot = function(obj) {
+        if (typeof obj === 'undefined') {
+            return [];
+        }
+
+        if (!(obj instanceof Array)) {
+            return [obj];
+        }
+        return obj;
+    };
+
 });
