@@ -80,17 +80,17 @@ angular.module('fiveStarApp')
         $scope.canceler = $q.defer();
 
         $scope.loading = true;
-        $scope.results = undefined;
+        $scope.state.results = undefined;
         ngProgress.start();
 
         $http.get('/api/search', {
             params: $scope.state,
             timeout: $scope.canceler.promise
         }).success(function(data) {
-            $scope.results = data;
+            $scope.state.results = data;
             ngProgress.complete();
             $scope.loading = false;
-            console.log($scope.results);
+            console.log($scope.state.results);
         });
 
 
