@@ -92,4 +92,22 @@ angular.module('fiveStarApp')
         }
     };
 
+    // returns true if that part of the state is defined
+    $scope.isBin = function(bin) {
+        if (bin === 'BrandName') {
+            return $scope.state.brand !== undefined;
+        } else if (['Categories', 'Subject'].indexOf(bin) !== -1) {
+            return $scope.state.node !== undefined;
+        }
+    };
+
+    // clears variable and therefore reloads page and data
+    $scope.clearBin = function(bin) {
+        if (bin === 'BrandName') {
+            $scope.state.brand = undefined;
+        } else if (['Categories', 'Subject'].indexOf(bin) !== -1) {
+            $scope.state.node = undefined;
+        }
+    };
+
 });
