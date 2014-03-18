@@ -60,7 +60,10 @@ angular.module('fiveStarApp')
             $location.search(k, v);
         });
         // resubscribe to urlChange
-        $scope.unsubRouteChange = $rootScope.$on('$locationChangeSuccess', $scope.syncFromURL);
+        $scope.unsubRouteChange = $rootScope.$on('$locationChangeSuccess', function() {
+            // update state based on $routeParams
+            $scope.syncFromURL();
+        });
 
         // swag, now call getData
         $scope.getData();
@@ -75,17 +78,17 @@ angular.module('fiveStarApp')
         $scope.canceler = $q.defer();
 
         $scope.loading = true;
-        $scope.state.results = undefined;
+        $scope.results = undefined;
         ngProgress.start();
 
         $http.get('/api/search', {
             params: $scope.state,
             timeout: $scope.canceler.promise
         }).success(function(data) {
-            $scope.state.results = data;
+            $scope.results = data;
             ngProgress.complete();
             $scope.loading = false;
-            console.log($scope.state.results);
+            console.log($scope.results);
         });
 
 
