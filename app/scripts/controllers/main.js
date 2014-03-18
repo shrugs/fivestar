@@ -3,13 +3,17 @@
 angular.module('fiveStarApp')
 .controller('MainCtrl', function ($scope, $routeParams, $location, debounce, ngProgress, $http, $q, $rootScope) {
 
-    $scope.state = {
-        query: $routeParams.query || '',
-        index: $routeParams.index || 'All',
-        node: parseInt($routeParams.node, 10) || undefined,
-        brand: $routeParams.brand,
-        onlyAmazon: $routeParams.onlyAmazon
+    $scope.syncFromURL = function() {
+        $scope.state = {
+            query: $routeParams.query || '',
+            index: $routeParams.index || 'All',
+            node: parseInt($routeParams.node, 10) || undefined,
+            brand: $routeParams.brand,
+            onlyAmazon: $routeParams.onlyAmazon
+        };
     };
+
+    $scope.syncFromURL();
     $scope.previousStates = [angular.copy($scope.state)];
     $scope.unsubRouteChange = function(){};
 
@@ -56,16 +60,7 @@ angular.module('fiveStarApp')
             $location.search(k, v);
         });
         // resubscribe to urlChange
-        $scope.unsubRouteChange = $rootScope.$on('$locationChangeSuccess', function() {
-            // update state based on $routeParams
-            $scope.state = {
-                query: $routeParams.query || '',
-                index: $routeParams.index || 'All',
-                node: parseInt($routeParams.node, 10) || undefined,
-                brand: $routeParams.brand,
-                onlyAmazon: $routeParams.onlyAmazon
-            };
-        });
+        $scope.unsubRouteChange = $rootScope.$on('$locationChangeSuccess', $scope.syncFromURL);
 
         // swag, now call getData
         $scope.getData();
