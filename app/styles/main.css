@@ -72,6 +72,10 @@
     width: 100%;
 }
 
+.item-attr-list {
+    overflow: hidden;
+}
+
 /* XS */
 @media (max-width:767px) {
     .bracket-price {
