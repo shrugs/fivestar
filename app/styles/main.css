@@ -80,7 +80,7 @@ html, body {
     overflow: hidden;
 }
 
-.first-run, .show-delay, .no-results, .error, .foot {
+.first-run, .show-delay, .no-results, .error, .foot, .loading {
     text-align: center;
     margin-top: 20%;
 }

@@ -120,6 +120,9 @@
 <div class="row first-run" ng-show="firstRun">
     <span class="text-muted">FiveStar gives you the best Amazon product in a domain, by price bracket.</span>
 </div>
+<div class="row loading" ng-hide="!loading || !((!showDelay || results) || error)">
+    <span class="text-muted">Loading...</span>
+</div>
 <div class="row show-delay" ng-hide="(!showDelay || results) || error">
     <span class="text-muted">Well, this is taking longer than usual...</span>
 </div>
@@ -130,5 +133,5 @@
     <span class="text-muted">{{error}}</span>
 </div>
 <div class="foot">
-    <span>♥ <a href="http://matt.cond.in">Matt Condon</a></span>
+    <span>FiveStar ♥ <a href="http://matt.cond.in">Matt Condon</a> | <a href="https://twitter.com/MattCMultimedia">@MattCMultimedia</a></span>
 </div>
