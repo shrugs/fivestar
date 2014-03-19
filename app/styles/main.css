@@ -92,7 +92,7 @@ html, body {
 /* XS */
 @media (max-width:767px) {
     .bracket-price {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .bootstrap-select>.selectpicker>.filter-option {
