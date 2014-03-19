@@ -121,7 +121,7 @@ angular.module('fiveStarApp')
         // add show Delay timeout
         $timeout(function() {
             $scope.showDelay = true;
-        }, 1600);
+        }, 2000);
 
     });
 
