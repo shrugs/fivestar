@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fiveStarApp')
-.controller('MainCtrl', function ($scope, $routeParams, $location, debounce, ngProgress, $http, $q, $rootScope) {
+.controller('MainCtrl', function ($scope, $routeParams, $location, debounce, ngProgress, $http, $q, $rootScope, $timeout) {
 
     $scope.syncFromURL = function() {
         $scope.state = {
@@ -17,7 +17,10 @@ angular.module('fiveStarApp')
     $scope.previousStates = [angular.copy($scope.state)];
     $scope.unsubRouteChange = function(){};
 
+    $scope.firstRun = true;
     $scope.loading = false;
+    $scope.showDelay = false;
+    $scope.noResults = false;
 
     ngProgress.color('#4FC1E9');
     $scope.canceler = $q.defer();
@@ -69,25 +72,52 @@ angular.module('fiveStarApp')
 
 
     $scope.getData = debounce(500, function() {
-        // pass the state to the backend to get the data
+
+        // reset all of our booleans
+        $scope.firstRun = false;
+        $scope.noResults = false;
+        $scope.showDelay = false;
+        $scope.error = undefined;
         $scope.canceler.resolve();
         ngProgress.reset();
         $scope.canceler = $q.defer();
-
         $scope.loading = true;
         $scope.results = undefined;
+
+        // start ngProgress bar
         ngProgress.start();
 
+        // pass the state to the backend to get the data
         $http.get('/api/search', {
             params: $scope.state,
             timeout: $scope.canceler.promise
         }).success(function(data) {
+            $scope.showDelay = false;
             $scope.results = data;
             ngProgress.complete();
             $scope.loading = false;
             console.log($scope.results);
+
+            // determine if there are no results
+            $scope.noResults = true;
+            for (var i = 0; i < $scope.results.results.length; i++) {
+                if ($scope.results.results[i].items.length !== 0) {
+                    // is good to go,
+                    $scope.noResults = false;
+                    break;
+                }
+            }
+
+        }).error(function() {
+            // Shit hapens, I guess
+            $scope.error = 'Whoops, looks like the server got too tired. Give it a second and try again!';
+            ngProgress.reset();
         });
 
+        // add show Delay timeout
+        $timeout(function() {
+            $scope.showDelay = true;
+        }, 1600);
 
     });
 

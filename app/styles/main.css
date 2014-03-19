@@ -76,6 +76,11 @@
     overflow: hidden;
 }
 
+.first-run, .show-delay, .no-results, .error {
+    text-align: center;
+    margin-top: 20%;
+}
+
 /* XS */
 @media (max-width:767px) {
     .bracket-price {
