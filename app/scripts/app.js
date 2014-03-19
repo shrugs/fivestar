@@ -7,8 +7,7 @@ angular.module('fiveStarApp', [
     'ngRoute',
     'rt.debounce',
     'angular-bootstrap-select',
-    'ngProgress',
-    'ngAnimate'
+    'ngProgress'
 ]).config(function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
