@@ -110,7 +110,11 @@ angular.module('fiveStarApp')
 
         }).error(function() {
             // Shit hapens, I guess
-            $scope.error = 'Whoops, looks like the server got too tired. Give it a second and try again!';
+
+            // only show error if we are not trying another request (we try another request on state change)
+            if (!$scope.loading) {
+                $scope.error = 'Whoops, looks like the server got too tired. Give it a second and try again!';
+            }
             ngProgress.reset();
         });
 

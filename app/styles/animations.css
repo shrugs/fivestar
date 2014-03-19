@@ -1,0 +1,24 @@
+.animate-show, .animate-hide {
+  -webkit-transition:all linear 1s;
+  -moz-transition:all linear 1s;
+  -ms-transition:all linear 1s;
+  -o-transition:all linear 1s;
+  transition:all linear 1s;
+
+}
+
+.animate-show {
+  opacity:0;
+}
+
+.animate-show.animate-show-active {
+  opacity:1;
+}
+
+.animate-hide {
+  opacity:1;
+}
+
+.animate-hide.animate-hide-active {
+  opacity:0;
+}

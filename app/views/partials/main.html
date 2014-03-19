@@ -44,7 +44,7 @@
                     <option value="Watches">Watches</option>
                 </select>
             <!-- </span> -->
-            <input type="text" class="form-control search-query" ng-model="state.query" placeholder="'led tv', 'toaster', 'outdoor table'">
+            <input type="text" class="form-control search-query" ng-model="state.query" placeholder="'led tv', 'card game', 'toaster', 'outdoor table'">
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-primary" data-type="last" ng-click="getData()">Search</button>
             </span>
@@ -117,15 +117,15 @@
         </div>
     </div>
 </div>
-<div class="row first-run" ng-show="firstRun">
+<div class="row first-run" ng-show="firstRun" ng-animate="{show:'animate-show', hide:'animate-hide'}">
     <span class="text-muted">FiveStar gives you the best Amazon product in a domain, by price bracket.</span>
 </div>
-<div class="row show-delay" ng-hide="(!showDelay || results) || error">
+<div class="row show-delay" ng-hide="(!showDelay || results) || error" ng-animate="{show:'animate-show', hide:'animate-hide'}">
     <span class="text-muted">Well, this is taking longer than usual...</span>
 </div>
-<div class="row no-results" ng-show="noResults">
+<div class="row no-results" ng-show="noResults" ng-animate="{show:'animate-show', hide:'animate-hide'}">
     <span class="text-muted">Dang, we couldn't find anything. Try a more generic query?</span>
 </div>
-<div class="row error" ng-show="error">
+<div class="row error" ng-show="error" ng-animate="{show:'animate-show', hide:'animate-hide'}">
     <span class="text-muted">{{error}}</span>
 </div>
