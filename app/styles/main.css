@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 .header {
     margin-top: 5px;
 }
@@ -76,9 +80,13 @@
     overflow: hidden;
 }
 
-.first-run, .show-delay, .no-results, .error {
+.first-run, .show-delay, .no-results, .error, .foot {
     text-align: center;
     margin-top: 20%;
+}
+.foot {
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 /* XS */
