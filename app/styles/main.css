@@ -82,10 +82,10 @@ html, body {
 
 .first-run, .show-delay, .no-results, .error, .foot, .loading {
     text-align: center;
-    margin-top: 20%;
+    margin-top: 5%;
 }
 .foot {
-    margin-top: 5%;
+    margin-top: 10%;
     margin-bottom: 5%;
 }
 
