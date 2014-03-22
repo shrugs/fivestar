@@ -93,7 +93,7 @@
                             <span class="item-price">
                                 <h2 class="item-list-price">{{item.ItemAttributes.ListPrice.FormattedPrice}}</h2><h6 class="item-new-price text-muted" ng-show="item.OfferSummary.LowestNewPrice">({{item.OfferSummary.TotalNew}} new from <span class="new-price">{{item.OfferSummary.LowestNewPrice.FormattedPrice}}</span>)</h6>
                             </span>
-                            <img ng-src="{{item.LargeImage.URL}}" width="{{item.LargeImage.Width['#']}}" height="{{item.LargeImage.Height['#']}}" class="item-img">
+                            <img ng-src="{{item.LargeImage ? item.LargeImage.URL : '/images/no_image.png'}}" width="{{item.LargeImage ? item.LargeImage.Width['#'] : 500}}" height="{{item.LargeImage ? item.LargeImage.Height['#'] : 400}}" class="item-img">
                             <div class="caption">
                                 <h3>{{item.ItemAttributes.Title}}</h3>
                                 <div class="row">
