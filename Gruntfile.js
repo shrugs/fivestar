@@ -54,10 +54,10 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
-      mochaTest: {
-        files: ['test/server/{,*/}*.js'],
-        tasks: ['mochaTest']
-      },
+      // mochaTest: {
+      //   files: ['test/server/{,*/}*.js'],
+      //   tasks: ['mochaTest']
+      // },
       jsTest: {
         files: ['test/client/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']

@@ -89,6 +89,11 @@ html, body {
     margin-bottom: 5%;
 }
 
+.index-nag {
+    margin-top: 2px;
+    text-align: center;
+}
+
 /* XS */
 @media (max-width:767px) {
     .bracket-price {

@@ -54,7 +54,7 @@
 
 <!-- FILTER SECTION -->
 <div class="row filter-block" ng-show="results && !loading">
-    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2" ng-hide="results.narrowNodes.length === 0 || noResults">
         <h5 class="narrow-by-header">Narrow Search By:</h5>
         <div class="btn-group node-cont" ng-repeat="section in results.narrowNodes">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-style="{borderRadius: isBin(section['@'].NarrowBy) ? '4px 0 0 4px' : undefined}" ng-disabled="section.Bin.length === 0">
@@ -76,6 +76,9 @@
             </div>
         </div>
     </div>
+</div>
+<div class="row index-nag">
+    <span class="text-muted" ng-show="(state.index == 'All') && (state.query.length > 1)">Choose a Department to begin narrowing your search.</span>
 </div>
 <div class="row results-block" ng-show="results && !loading">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -127,7 +130,7 @@
     <span class="text-muted">Well, this is taking longer than usual...</span>
 </div>
 <div class="row no-results" ng-show="noResults">
-    <span class="text-muted">Dang, we couldn't find anything. Try a more generic query?</span>
+    <span class="text-muted">Dang, we couldn't find anything. Try a more generic query or a different Department.</span>
 </div>
 <div class="row error" ng-show="error">
     <span class="text-muted">{{error}}</span>
