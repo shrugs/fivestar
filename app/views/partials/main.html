@@ -93,8 +93,19 @@
                     <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" ng-repeat="item in bracket.items">
 
                         <div class="thumbnail">
-                            <span class="item-price">
-                                <h2 class="item-list-price">{{item.ItemAttributes.ListPrice.FormattedPrice}}</h2><h6 class="item-new-price text-muted" ng-show="item.OfferSummary.LowestNewPrice">({{item.OfferSummary.TotalNew}} new from <span class="new-price">{{item.OfferSummary.LowestNewPrice.FormattedPrice}}</span>)</h6>
+                            <!-- SHOWN IF LOWER NEW PRICE -->
+                            <span class="item-price" ng-if="item.OfferSummary.LowestNewPrice">
+                                <h2 class="item-list-price">
+                                    {{item.OfferSummary.LowestNewPrice.FormattedPrice}}
+                                </h2>
+                                <h6 class="item-new-price text-muted" ng-show="item.OfferSummary.LowestNewPrice">({{item.OfferSummary.TotalNew}} availible, originally <span class="new-price">{{item.ItemAttributes.ListPrice.FormattedPrice}}</span>)</h6>
+                            </span>
+                            <!-- SHOWN IF NO LOWEST NEW PRICE -->
+                            <span class="item-price" ng-if="!item.OfferSummary.LowestNewPrice">
+                                <h2 class="item-list-price">
+                                    {{item.ItemAttributes.ListPrice.FormattedPrice}}
+                                </h2>
+                                <h6 class="item-new-price text-muted" ng-show="item.OfferSummary.LowestNewPrice">({{item.OfferSummary.TotalNew}} new from <span class="new-price">{{item.OfferSummary.LowestNewPrice.FormattedPrice}}</span>)</h6>
                             </span>
                             <img ng-src="{{item.LargeImage ? item.LargeImage.URL : '/images/no_image.png'}}" width="{{item.LargeImage ? item.LargeImage.Width['#'] : 500}}" height="{{item.LargeImage ? item.LargeImage.Height['#'] : 400}}" class="item-img">
                             <div class="caption">
