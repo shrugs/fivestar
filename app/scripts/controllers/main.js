@@ -71,7 +71,7 @@ angular.module('fiveStarApp')
     }, true);
 
 
-    $scope.getData = debounce(500, function() {
+    $scope.getData = debounce(1000, function() {
 
         // reset all of our booleans
         $scope.firstRun = false;
