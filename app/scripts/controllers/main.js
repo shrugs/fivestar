@@ -25,7 +25,7 @@ angular.module('fiveStarApp')
     ngProgress.color('#4FC1E9');
     $scope.canceler = $q.defer();
 
-    $scope.handleState = debounce(700, function() {
+    $scope.handleState = debounce(500, function() {
         // update URL on state change and save to previousStates
 
         // error check
@@ -73,7 +73,7 @@ angular.module('fiveStarApp')
     $scope.$watch('state', $scope.handleState, true);
 
 
-    $scope.getData = debounce(1000, function() {
+    $scope.getData = debounce(200, function() {
 
         // reset all of our booleans
         $scope.firstRun = false;
