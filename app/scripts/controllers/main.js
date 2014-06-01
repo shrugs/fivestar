@@ -98,6 +98,16 @@ angular.module('fiveStarApp')
             $scope.results = data;
             ngProgress.complete();
             $scope.loading = false;
+            var unbindWatching = $scope.$watch('results.results', function() {
+                if ($scope.results.results.length > 0) {
+                    angular.forEach($scope.results.results, function(r) {
+                        angular.forEach(r.items, function(item) {
+                            item.DetailPageURL = decodeURIComponent(item.DetailPageURL);
+                        });
+                    });
+                    unbindWatching();
+                }
+            });
             console.log($scope.results);
 
             // determine if there are no results
