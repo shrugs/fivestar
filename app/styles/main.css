@@ -94,6 +94,10 @@ html, body {
     text-align: center;
 }
 
+.throttle-error {
+    margin-bottom: 5px;
+}
+
 /* XS */
 @media (max-width:767px) {
     .bracket-price {
