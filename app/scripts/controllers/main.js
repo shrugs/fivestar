@@ -25,7 +25,7 @@ angular.module('fiveStarApp')
     ngProgress.color('#4FC1E9');
     $scope.canceler = $q.defer();
 
-    $scope.handleState = debounce(500, function() {
+    $scope.handleState = debounce(700, function() {
         // update URL on state change and save to previousStates
 
         // error check
@@ -73,7 +73,7 @@ angular.module('fiveStarApp')
     $scope.$watch('state', $scope.handleState, true);
 
 
-    $scope.getData = debounce(200, function() {
+    $scope.getData = function() {
 
         // reset all of our booleans
         $scope.firstRun = false;
@@ -135,7 +135,7 @@ angular.module('fiveStarApp')
             $scope.showDelay = true;
         }, 2000);
 
-    });
+    };
 
 
     $scope.selectBin = function(bin) {
@@ -175,6 +175,10 @@ angular.module('fiveStarApp')
             return [obj];
         }
         return obj;
+    };
+
+    $scope.toggleOnlyAmazon = function() {
+        $scope.state.onlyAmazon = !$scope.state.onlyAmazon;
     };
 
 });

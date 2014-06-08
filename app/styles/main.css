@@ -2,8 +2,16 @@ html, body {
     height: 100%;
 }
 
+.form-search {
+    margin-top: 30px;
+}
+
 .header {
     margin-top: 5px;
+}
+
+.btn-primary.active {
+    background-color: #008ABD;
 }
 
 .input-group .btn.dropdown-toggle.selectpicker {
@@ -107,6 +115,14 @@ html, body {
     .bootstrap-select>.selectpicker>.filter-option {
         font-size: 0.6em;
         margin-top: 5px;
+    }
+
+    .onlyAmazon {
+        font-size: 0.6em;
+        padding-top: 11px;
+        padding-bottom: 10px;
+        padding-left: 6px;
+        padding-right: 6px;
     }
 }
 
