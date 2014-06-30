@@ -2,6 +2,10 @@ html, body {
     height: 100%;
 }
 
+.twitter-share-button {
+    margin-left: 10px;
+}
+
 .form-search {
     margin-top: 30px;
 }
