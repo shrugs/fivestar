@@ -13,7 +13,8 @@
     "angular-route": "1.2.11",
     "angular-debounce": "~0.0.2",
     "ngprogress": "~1.0.4",
-    "bootflatv2": "*"
+    "bootflatv2": "*",
+    "angular-bootstrap-select": "~0.0.5"
   },
   "devDependencies": {
     "angular-mocks": "1.2.11",
