@@ -60,7 +60,7 @@ module.exports = function (grunt) {
       // },
       jsTest: {
         files: ['test/client/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
+        tasks: ['newer:jshint:test']
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
@@ -398,20 +398,6 @@ module.exports = function (grunt) {
     //   dist: {}
     // },
 
-    // Test settings
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js',
-        singleRun: true
-      }
-    },
-
-    mochaTest: {
-      options: {
-        reporter: 'spec'
-      },
-      src: ['test/server/**/*.js']
-    },
 
     env: {
       test: {
@@ -471,7 +457,6 @@ module.exports = function (grunt) {
     if (target === 'server') {
       return grunt.task.run([
         'env:test',
-        'mochaTest'
       ]);
     }
 
@@ -480,7 +465,6 @@ module.exports = function (grunt) {
         'clean:server',
         'concurrent:test',
         'autoprefixer',
-        'karma'
       ]);
     }
 
@@ -490,7 +474,6 @@ module.exports = function (grunt) {
       'clean:server',
       'concurrent:test',
       'autoprefixer',
-      'karma'
     ]);
   });
 
