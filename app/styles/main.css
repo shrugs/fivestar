@@ -7,7 +7,7 @@ html, body {
 }
 
 .form-search {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .header {
@@ -85,6 +85,7 @@ html, body {
 }
 
 .logo {
+    margin-top: 35px;
     width: 100%;
 }
 
