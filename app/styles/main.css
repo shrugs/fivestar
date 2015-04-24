@@ -148,3 +148,8 @@ html, body {
 @media (min-width: 1200px) {
 
 }
+
+.download {
+  height: 70px;
+  margin-bottom: 10px;
+}
