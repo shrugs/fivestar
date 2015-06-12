@@ -126,7 +126,8 @@ module.exports = function (grunt) {
             '.tmp',
             '<%= yeoman.dist %>/*',
             '!<%= yeoman.dist %>/.git*',
-            '!<%= yeoman.dist %>/Procfile'
+            '!<%= yeoman.dist %>/Procfile',
+            '!<%= yeoman.dist %>/.elasticbeanstalk*'
           ]
         }]
       },
@@ -337,6 +338,12 @@ module.exports = function (grunt) {
             'server.js',
             'lib/**/*'
           ]
+        }, {
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.dist %>/public/',
+          src: 'googlec6c01967525fe5d3.html'
         }]
       },
       styles: {
