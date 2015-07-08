@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "dependencies": {
     "aws-lib": "0.3.0",
+    "bluebird": "^2.9.32",
     "ejs": "^0.8.8",
     "express": "~3.4.3",
     "lodash": "~2.4.1",
-    "memory-cache": "0.0.5"
+    "memory-cache": "0.0.5",
+    "pg-promise": "^1.7.6"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
