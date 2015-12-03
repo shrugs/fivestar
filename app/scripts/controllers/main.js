@@ -25,7 +25,7 @@ angular.module('fiveStarApp')
     ngProgress.color('#4FC1E9');
     $scope.canceler = $q.defer();
 
-    $scope.handleState = debounce(700, function() {
+    $scope.handleState = debounce(1200, function() {
         // update URL on state change and save to previousStates
 
         // error check
@@ -75,6 +75,8 @@ angular.module('fiveStarApp')
 
     $scope.getData = function() {
 
+        ga('send', 'event', 'search', 'click');
+
         // reset all of our booleans
         $scope.firstRun = false;
         $scope.noResults = false;
@@ -108,7 +110,6 @@ angular.module('fiveStarApp')
                     unbindWatching();
                 }
             });
-            console.log($scope.results);
 
             // determine if there are no results
             $scope.noResults = true;
@@ -180,5 +181,11 @@ angular.module('fiveStarApp')
     $scope.toggleOnlyAmazon = function() {
         $scope.state.onlyAmazon = !$scope.state.onlyAmazon;
     };
+
+    $scope.recordAmazonClickthrough = function() {
+      if (ga) {
+        ga('send', 'event', 'amazon', 'clickthrough');
+      }
+    }
 
 });

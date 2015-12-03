@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <a class="btn btn-success btn-block" ng-href="{{item.DetailPageURL.replace('www.amazon.com', 'smile.amazon.com')}}" target="_blank">View on Amazon</a>
+                                        <a class="btn btn-success btn-block" ng-href="{{item.DetailPageURL.replace('www.amazon.com', 'smile.amazon.com')}}" target="_blank" ng-click="recordAmazonClickthrough()">View on Amazon</a>
                                     </div>
                                 </div>
                             </div>
@@ -139,12 +139,7 @@
     <span class="text-muted">{{error}}</span>
 </div>
 <div class="foot">
-  <div class="row">
-    <a href="http://itunes.apple.com/app/id980681168?at=1001lEm" target="_blank">
-      <img class="download" src="images/appstore.svg">
-    </a>
-  </div>
     <span>FiveStar ♥ <a href="http://mat.tc">Matt Condon</a> | <a href="https://twitter.com/mattgcondon">@mattgcondon</a></span>
     <br>
-    <span><div class="fb-share-button" data-href="http://fivestar.io" data-width="200" data-type="button_count"></div><a href="https://twitter.com/share" data-url="http://fivestar.io" data-text="FiveStar found me the best item on Amazon!" data-related="fivestario:FiveStar.io" data-hastags="#FiveStar" data-counturl="http://www.fivestar.io" class="twitter-share-button" data-lang="en" data-dnt="true">Tweet</a></span>
+    <div class="share-buttons-container"><div class="fb-share-button" data-href="http://fivestar.io" data-width="200" data-type="button_count"></div><a href="https://twitter.com/share" data-url="http://fivestar.io" data-text="FiveStar found me the best item on Amazon!" data-related="fivestario:FiveStar.io" data-hastags="#FiveStar" data-counturl="http://www.fivestar.io" class="twitter-share-button" data-lang="en" data-dnt="true">Tweet</a></div>
 </div>

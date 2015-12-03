@@ -153,3 +153,10 @@ html, body {
   height: 70px;
   margin-bottom: 10px;
 }
+
+.share-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
