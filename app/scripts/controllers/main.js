@@ -75,7 +75,7 @@ angular.module('fiveStarApp')
 
     $scope.getData = function() {
 
-        ga('send', 'event', 'search', 'click');
+        ga('send', 'event', 'search', 'click', $scope.state);
 
         // reset all of our booleans
         $scope.firstRun = false;
