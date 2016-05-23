@@ -1,0 +1,50 @@
+
+@import "~foundation-sites/scss/foundation.scss";
+
+@include foundation-flex-grid;
+@include foundation-flex-classes;
+@include foundation-everything;
+
+.bucket-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  h4 {
+    font-weight: bold;
+  }
+}
+
+.product-bucket {
+  margin-bottom: rem-calc(20px);
+}
+
+.price-display {
+  text-align: center;
+
+  .lowest-new-price, .num-available {
+    width: 100%;
+    margin-bottom: rem-calc(5px);
+  }
+
+  .lowest-new-price {
+    font-weight: bold;
+    font-size: 3.5rem;
+  }
+
+  .num-available {
+    font-size: 0.8rem;
+    color: $dark-gray;
+  }
+}
+
+.product {
+  img {
+    max-height: 400px;
+  }
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}

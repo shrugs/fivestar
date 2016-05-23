@@ -7,6 +7,8 @@ import configureStore from 'reducers/configure-store'
 
 import syncQueryToParams from 'middleware/syncQueryToParams'
 
+import 'styles/main.scss'
+
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
 

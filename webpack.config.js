@@ -5,13 +5,12 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // [webpack-rails] must match config.webpack.dev_server.port
+const appRoot = path.join(__dirname, 'app')
 const devServerPort = 3808
 let env = 'development'
-
-
 if (process.env.NODE_ENV === 'production') {
   env = 'production'
 }
@@ -23,7 +22,11 @@ const envFlagPlugin = new webpack.DefinePlugin({
   __PROD__: JSON.stringify(env === 'production')
 })
 
-const appRoot = path.join(__dirname, 'app')
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  template: 'index.html',
+  appMountId: 'root',
+  title: 'fivestar | Better Amazon Search'
+})
 
 const configs = {
 
@@ -41,14 +44,14 @@ const configs = {
         containers: path.join(appRoot, 'containers'),
         middleware: path.join(appRoot, 'middleware'),
         reducers: path.join(appRoot, 'reducers'),
-        images: path.join(appRoot, 'images')
+        images: path.join(appRoot, 'images'),
+        styles: path.join(appRoot, 'styles')
       }
     },
     plugins: [
       envFlagPlugin,
-      new HtmlWebpackPlugin({
-        template: 'index.hbs'
-      })
+      new ExtractTextPlugin('styles.css'),
+      htmlWebpackPlugin,
     ],
     module: {
       loaders: [{
@@ -59,14 +62,14 @@ const configs = {
           presets: ['es2015', 'react', 'stage-0']
         }
       }, {
-        test: /\.hbs$/,
-        loader: 'handlebars'
-      }, {
         test: /\.(png|gif|jpe?g|svg)$/i,
         loader: 'url',
         query: {
           limit: 10000
         }
+      }, {
+        test: /\.(s?css)$/i,
+        loader: ExtractTextPlugin.extract('style-loader', 'css!sass')
       }]
     }
   },
@@ -81,7 +84,7 @@ const configs = {
     devtool: 'inline-source-map',
     output: {
       path: path.join(__dirname, 'build'),
-      // publicPath: `//localhost:${devServerPort}/client/`,
+      // publicPath: '//localhost:${devServerPort}/client/',
       filename: '[name].js'
     }
   },
@@ -94,9 +97,7 @@ const configs = {
     },
     plugins: [
       envFlagPlugin,
-      new HtmlWebpackPlugin({
-        template: 'index.hbs'
-      }),
+      new ExtractTextPlugin('styles-[hash].css'),
       new webpack.NoErrorsPlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compressor: {
@@ -110,7 +111,8 @@ const configs = {
         }
       }),
       new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.OccurenceOrderPlugin()
+      new webpack.optimize.OccurenceOrderPlugin(),
+      htmlWebpackPlugin,
     ]
   }
 
@@ -118,4 +120,6 @@ const configs = {
 
 console.log(`Started ${env} build...\n`)
 
-module.exports = Object.assign(configs.common, configs[env])
+const webpackConfig = Object.assign(configs.common, configs[env])
+
+module.exports = webpackConfig

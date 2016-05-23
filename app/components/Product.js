@@ -1,12 +1,15 @@
 import React from 'react'
+import { Row, Column, Button } from 'react-foundation'
 
 export default class Product extends React.Component {
 
   static propTypes = {
     ASIN: React.PropTypes.string,
     DetailPageURL: React.PropTypes.string,
-    ItemLinks: React.PropTypes.array,
-    SalesRank: React.PropTypes.number,
+    ItemLinks: React.PropTypes.shape({
+      ItemLink: React.PropTypes.array
+    }),
+    SalesRank: React.PropTypes.string,
     SmallImage: React.PropTypes.object,
     MediumImage: React.PropTypes.object,
     LargeImage: React.PropTypes.shape({
@@ -19,14 +22,14 @@ export default class Product extends React.Component {
       Label: React.PropTypes.string,
       Title: React.PropTypes.string,
       ListPrice: React.PropTypes.shape({
-        FormattedPrice: React.PropTypes.number
+        FormattedPrice: React.PropTypes.string
       })
     }),
     OfferSummary: React.PropTypes.shape({
       LowestNewPrice: React.PropTypes.shape({
         FormattedPrice: React.PropTypes.string
       }),
-      TotalNew: React.PropTypes.number
+      TotalNew: React.PropTypes.string
     })
 
   }
@@ -42,29 +45,39 @@ export default class Product extends React.Component {
     const { LowestNewPrice, TotalNew } = OfferSummary
 
     return (
-      <div>
-        <div>{LowestNewPrice.FormattedPrice}</div>
-        <div>{`normally ${ListPrice.FormattedPrice}, ${TotalNew} available`}</div>
-      </div>
+      <Row isColumn className='price-display'>
+        <Row><h4 className='lowest-new-price'>{LowestNewPrice.FormattedPrice}</h4></Row>
+        <Row>
+          <p className='num-available'>
+            {`normally ${ListPrice.FormattedPrice}, ${TotalNew} available`}
+          </p>
+        </Row>
+      </Row>
     )
+  }
+
+  handleViewProduct() {
+    window.open(this.props.DetailPageURL, '_blank')
   }
 
   render() {
     return (
-      <div>
-        <div>
-          {this.priceDisplay()}
+      <Row isColumn className='product'>
+        {this.priceDisplay()}
+        <Row isColumn>
           <img alt='product' src={this.imageSource()} />
-          <div>
-            <h3>{this.props.ItemAttributes.Title}</h3>
-            <ul>
-              {this.props.ItemAttributes.Feature.map(f =>
-                <li key={f}>{f}</li>
-              )}
-            </ul>
-          </div>
-        </div>
-      </div>
+        </Row>
+        <Row isColumn>
+          <h3 className='title'>{this.props.ItemAttributes.Title}</h3>
+          <ul>
+            {this.props.ItemAttributes.Feature.slice(0, 3).map(f =>
+              <li key={f}>{f}</li>
+            )}
+            {this.props.ItemAttributes.Feature.length > 3 && <li><a onClick={this.handleViewProduct.bind(this)}>... read more</a></li>}
+          </ul>
+          <Button isExpanded onClick={this.handleViewProduct.bind(this)}>View on Amazon</Button>
+        </Row>
+      </Row>
     )
   }
 }
