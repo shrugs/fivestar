@@ -1,22 +1,35 @@
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
-// import { SAY_HELLO } from '../actions'
+import {
+  MIRROR_PARAMS,
+  NEW_RESULTS
+} from '../actions'
 
-function helloWorld(state = {}, action) {
-  // switch (action.type) {
-  //   case SAY_HELLO:
-  //     return {
-  //       ...state,
-  //       name: action.name
-  //     }
-  //   default:
-  //     return state
-  // }
-  return state
+function resultsReducer(state = [], action) {
+  switch (action.type) {
+    case NEW_RESULTS:
+      return action.results
+    default:
+      return state
+  }
+}
+
+function paramsReducer(state = { q: '' }, action) {
+  switch (action.type) {
+    case MIRROR_PARAMS:
+      return {
+        ...state,
+        ...action.params
+      }
+
+    default:
+      return state
+  }
 }
 
 const rootReducer = combineReducers({
-  helloWorld,
+  params: paramsReducer,
+  results: resultsReducer,
   routing
 })
 

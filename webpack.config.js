@@ -4,8 +4,7 @@
 
 const path = require('path')
 const webpack = require('webpack')
-const StatsPlugin = require('stats-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 // [webpack-rails] must match config.webpack.dev_server.port
@@ -24,16 +23,7 @@ const envFlagPlugin = new webpack.DefinePlugin({
   __PROD__: JSON.stringify(env === 'production')
 })
 
-// [webpack-rails] must match config.webpack.manifest_filename
-const statsPlugin = new StatsPlugin('bundle-manifest.json', {
-  // We only need assetsByChunkName
-  chunkModules: false,
-  source: false,
-  chunks: false,
-  modules: false,
-  assets: true
-})
-
+const appRoot = path.join(__dirname, 'app')
 
 const configs = {
 
@@ -44,7 +34,15 @@ const configs = {
     },
     resolve: {
       root: `${__dirname}/app`,
-      extensions: ['', '.js', '.json', '.jsx']
+      extensions: ['', '.js', '.json', '.jsx'],
+      alias: {
+        actions: path.join(appRoot, 'actions'),
+        components: path.join(appRoot, 'components'),
+        containers: path.join(appRoot, 'containers'),
+        middleware: path.join(appRoot, 'middleware'),
+        reducers: path.join(appRoot, 'reducers'),
+        images: path.join(appRoot, 'images')
+      }
     },
     plugins: [
       envFlagPlugin,
@@ -63,6 +61,12 @@ const configs = {
       }, {
         test: /\.hbs$/,
         loader: 'handlebars'
+      }, {
+        test: /\.(png|gif|jpe?g|svg)$/i,
+        loader: 'url',
+        query: {
+          limit: 10000
+        }
       }]
     }
   },
@@ -74,7 +78,7 @@ const configs = {
         'Access-Control-Allow-Origin': '*'
       }
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'inline-source-map',
     output: {
       path: path.join(__dirname, 'build'),
       // publicPath: `//localhost:${devServerPort}/client/`,

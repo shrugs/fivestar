@@ -20,7 +20,8 @@
     "func-names": 0,
     "space-before-function-paren": [2, {"anonymous": "always", "named": "never"}],
     "semi": [2, "never"],
-    "comma-dangle": [2, "never"]
+    "comma-dangle": [2, "never"],
+    "import/no-unresolved": "off"
   },
   "globals": {
     "__ENV__": false,
