@@ -5,6 +5,9 @@
 @include foundation-flex-classes;
 @include foundation-everything;
 
+$fivestar-blue: #3bafda;
+$fivestar-dark-blue: #25A8D9;
+
 .bucket-price {
   display: flex;
   align-items: center;
@@ -46,5 +49,45 @@
   .title {
     font-size: 1.5rem;
     font-weight: bold;
+  }
+}
+
+.help-text {
+  font-style: none;
+  font-size: 1rem;
+  color: $dark-gray;
+  margin-top: rem-calc(30px);
+  text-align: center;
+}
+
+.banner-image-container {
+  margin-top: 6rem;
+}
+
+.search-container {
+  margin-top: rem-calc(40px);
+}
+
+button {
+  background-color: $fivestar-blue;
+
+  &:active, &:hover, &:focus {
+    background-color: $fivestar-dark-blue;
+  }
+}
+
+.results-list-container {
+  margin-top: rem-calc(30px);
+}
+
+.share-buttons-container {
+  margin-bottom: rem-calc(50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .SocialMediaShareButton {
+    margin-left: rem-calc(10px);
+    margin-right: rem-calc(10px);
   }
 }

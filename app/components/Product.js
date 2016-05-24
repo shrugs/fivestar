@@ -71,7 +71,7 @@ export default class Product extends React.Component {
           <h3 className='title'>{this.props.ItemAttributes.Title}</h3>
           <ul>
             {this.props.ItemAttributes.Feature.slice(0, 3).map(f =>
-              <li key={f}>{f}</li>
+              <li key={f}>{f.slice(0, 75) + (f.length > 75 ? '...' : '')}</li>
             )}
             {this.props.ItemAttributes.Feature.length > 3 && <li><a onClick={this.handleViewProduct.bind(this)}>... read more</a></li>}
           </ul>

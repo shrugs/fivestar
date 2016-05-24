@@ -1,7 +1,10 @@
 import axios from 'axios'
 
+import { historyCheckpoint } from 'actions/UrlActions'
+
 export const NEW_RESULTS = 'NEW_RESULTS'
 export function performSearch(params) {
+  historyCheckpoint({query: params})
   return dispatch => {
     axios({
       method: 'GET',
@@ -15,5 +18,12 @@ export function performSearch(params) {
         results
       })
     })
+  }
+}
+
+export const CLEAR_RESULTS = 'CLEAR_RESULTS'
+export function clearResults() {
+  {
+    type: CLEAR_RESULTS
   }
 }

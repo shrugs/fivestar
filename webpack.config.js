@@ -25,7 +25,11 @@ const envFlagPlugin = new webpack.DefinePlugin({
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   template: 'index.html',
   appMountId: 'root',
-  title: 'fivestar | Better Amazon Search'
+  title: 'fivestar | Better Amazon Search',
+  googleAnalytics: {
+    trackingId: 'UA-49173715-1',
+    pageViewOnLoad: true
+  }
 })
 
 const configs = {

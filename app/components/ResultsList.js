@@ -27,7 +27,7 @@ export default class ResultsList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='results-list-container'>
         {this.props.buckets && this.props.buckets.filter(b => b.items.length > 0).map(bucket =>
           <ProductBucket key={bucket.minPrice} {...bucket} />
         )}
