@@ -27,9 +27,8 @@ const TwitterIcon = generateShareIcon('twitter');
 import bannerImage from 'images/banner.png'
 
 import {
-  performSearch,
-  clearResults,
-  historyCheckpoint
+  commitParamsToHistory,
+  clearResults
 } from 'actions'
 
 class Index extends React.Component {
@@ -38,6 +37,9 @@ class Index extends React.Component {
     const params = this.props.params
 
     const pageTitle = params.q ? `Best ${params.q} on Amazon` : 'fivestar | Better Amazon Search'
+
+    const { buckets } = this.props.results
+    const hasResults = (buckets && buckets.length > 0)
     return (
       <Row className='display' isColumn>
         <Helmet title={pageTitle} />
@@ -49,11 +51,11 @@ class Index extends React.Component {
         <Row>
           <Column small={12} medium={10} centerOnMedium>
             <Search
-              showFilters={!!this.props.results.buckets}
-              performSearch={this.props.performSearch}
+              showFilters={hasResults}
+              performSearch={this.props.commitParamsToHistory}
               clearResults={this.props.clearResults}
               params={params}
-              filters={this.props.results.narrowNodes}
+              // filters={this.props.results.narrowNodes}
             />
             {!this.props.results.buckets &&
               <div className='help-text'>
@@ -71,7 +73,7 @@ class Index extends React.Component {
         <Row>
           <Column small={12} medium={10} centerOnMedium>
             <Row>
-              <Column small={!!this.props.results.buckets ? 10 : 12} offsetOnSmall={!!this.props.results.buckets ? 2 : 0}>
+              <Column small={hasResults ? 10 : 12} offsetOnSmall={hasResults ? 2 : 0}>
                 <div className='share-buttons-container'>
                   <FacebookShareButton
                     url='http://fivestar.io'
@@ -96,9 +98,9 @@ class Index extends React.Component {
 }
 
 export default connect(state => ({
-  params: state.params,
+  params: state.routing.locationBeforeTransitions.query,
   results: state.results
 }), {
-  performSearch,
+  commitParamsToHistory,
   clearResults
 })(Index)

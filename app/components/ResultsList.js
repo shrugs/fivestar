@@ -10,7 +10,7 @@ const ProductBucket = ({ items, minPrice }) => (
     <Column small={10}>
       <Row>
         {items && items.map(item =>
-          <Column key={item.ASIN} small={6}>
+          <Column key={item.ASIN} small={12} medium={6}>
             <Product {...item} />
           </Column>
         )}
@@ -31,6 +31,9 @@ export default class ResultsList extends React.Component {
         {this.props.buckets && this.props.buckets.filter(b => b.items.length > 0).map(bucket =>
           <ProductBucket key={bucket.minPrice} {...bucket} />
         )}
+        {(!this.props.buckets || this.props.buckets.length < 1) &&
+          <p className='text-center'>No results found.</p>
+        }
       </div>
     )
   }

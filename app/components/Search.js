@@ -4,7 +4,8 @@ import {
   Row,
   Column,
   Button,
-  Switch
+  Switch,
+  InputTypes
 } from 'react-foundation'
 
 export default class Search extends React.Component {
@@ -12,7 +13,7 @@ export default class Search extends React.Component {
   static propTypes = {
     showFilters: React.PropTypes.bool,
     params: React.PropTypes.shape({
-      q: React.PropTypes.string,
+      query: React.PropTypes.string,
       index: React.PropTypes.string,
       node: React.PropTypes.string,
       brand: React.PropTypes.string,
@@ -47,34 +48,20 @@ export default class Search extends React.Component {
     this.setState(this.propParamsToState(nextProps.params))
   }
 
-  componentDidMount() {
-    // this.performSearch()
-  }
-
   propParamsToState(params) {
     return {
       ...params,
-      q: params.q || ''
+      query: params.query || ''
     }
   }
 
   performSearch() {
-    if (this.state.q === undefined || this.state.q.length < 1) {
-      // bail if there's no search term yet
-      this.props.clearResults()
-      return
-    }
-
     this.props.performSearch(this.state)
-  }
-
-  submitParamChanges(newParam = {}) {
-    this.setState(newParam, this.performSearch.bind(this))
   }
 
   handleKeyDown(e) {
     if (e.which === 13) {
-      this.submitParamChanges()
+      this.performSearch()
     }
   }
 
@@ -85,7 +72,7 @@ export default class Search extends React.Component {
   }
 
   handleIndexChange(newIndex) {
-    this.setState({ index: newValue }, this.performSearch.bind(this))
+    this.setState({ index: newIndex }, this.performSearch.bind(this))
   }
 
   handleFilterChange(filterType, newValue) {
@@ -99,6 +86,13 @@ export default class Search extends React.Component {
     }, this.performSearch.bind(this))
   }
 
+  prettyNarrowBy(narrowBy) {
+    return {
+      Subject: 'Subject',
+      BrandName: 'Brand Name'
+    }[narrowBy]
+  }
+
   render() {
 
     return (
@@ -109,12 +103,12 @@ export default class Search extends React.Component {
             type='text'
             className='input-group-field'
             placeholder="'headphones', 'school laptop', 'toaster'"
-            value={this.state.q}
+            value={this.state.query}
             onKeyDown={this.handleKeyDown.bind(this)}
-            onChange={e => this.setState({ q: e.target.value })}
+            onChange={e => this.setState({ query: e.target.value })}
           />
           <div className='input-group-button'>
-            <Button type='submit' onClick={() => this.submitParamChanges()}>
+            <Button type='submit' onClick={() => this.performSearch()}>
               Search
             </Button>
           </div>
@@ -122,19 +116,24 @@ export default class Search extends React.Component {
         </Row>
         <Row>
           {this.props.showFilters &&
-            <Column small={6} medium={6}>
+            <Column small={12} medium={6}>
               <label>Only Fulfilled by Amazon
                 <Switch
-                  checked={!!this.state.onlyAmazon}
-                  onChange={e => this.handleOnlyAmazonChange(e.target.checked)}
+                  input={{
+                    type: InputTypes.CHECKBOX,
+                    checked: !!this.state.onlyAmazon,
+                    onChange: (e) => this.handleOnlyAmazonChange(e.target.checked)
+                  }}
                 />
               </label>
             </Column>
           }
           {this.props.showFilters &&
-            <Column small={6} medium={6}>
+            <Column small={12} medium={6}>
               <label>Department
-                <select selected={this.state.index || 'All'} onChange={e => this.handleIndexChange(e.target.value)}>
+                <select
+                  value={this.state.index || 'All'}
+                  onChange={e => this.handleIndexChange(e.target.value)}>
                   <option value="All">All Depts.</option>
                   <option value="Appliances">Appliances</option>
                   <option value="MobileApps">Apps for Android</option>
@@ -177,10 +176,10 @@ export default class Search extends React.Component {
           }
           {this.props.filters && this.props.filters.filter(f => f.Bin.length > 0).map(f =>
             <Column small={6} medium={6} key={f['@']['NarrowBy']}>
-              <label>{f['@']['NarrowBy']}
+              <label>{this.prettyNarrowBy(f['@']['NarrowBy'])}
                 <select onChange={e => this.handleFilterChange(f.Bin[0].BinParameter.Name, e.target.value)}>
                   <option value='none'>
-                    Every {f['@']['NarrowBy']}
+                    Every {this.prettyNarrowBy(f['@']['NarrowBy'])}
                   </option>
                   {f.Bin.map(b =>
                     <option value={b.BinParameter.Value} key={b.BinParameter.Value}>

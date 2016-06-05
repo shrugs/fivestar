@@ -5,14 +5,11 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import Root from 'containers/Root'
 import configureStore from 'reducers/configure-store'
 
-import syncQueryToParams from 'middleware/syncQueryToParams'
-
 import 'styles/main.scss'
+import 'styles/nprogress.css'
 
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
-
-syncQueryToParams(history, store)
 
 render(
   // Use React.createElement to avoid issues with JSX in entry point

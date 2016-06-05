@@ -47,7 +47,9 @@ $fivestar-dark-blue: #25A8D9;
     max-height: 400px;
   }
   .title {
-    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.3rem;
     font-weight: bold;
   }
 }

@@ -1,9 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default function App(props) {
-  return (
-    <div>
-      {props.children}
-    </div>
-  )
+class App extends React.Component {
+  render() {
+    return (
+      <div>{this.props.children}</div>
+    )
+  }
 }
+
+export default connect(state => ({
+
+}), {
+})(App)

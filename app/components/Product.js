@@ -1,6 +1,8 @@
 import React from 'react'
 import { Row, Column, Button } from 'react-foundation'
 
+import noImage from 'images/no_image.jpg'
+
 export default class Product extends React.Component {
 
   static propTypes = {
@@ -35,8 +37,18 @@ export default class Product extends React.Component {
   }
 
   imageSource() {
-    const { LargeImage } = this.props
-    return LargeImage.URL
+    const { LargeImage, MediumImage } = this.props
+    if (LargeImage !== undefined) { return LargeImage.URL }
+    if (MediumImage !== undefined) { return MediumImage.URL }
+
+    const ImageSets = this.props.ImageSets
+    if (ImageSets !== undefined) {
+      const { ImageSet } = ImageSets
+      if (ImageSet.LargeImage !== undefined) { return ImageSet.LargeImage.URL }
+      if (ImageSet.MediumImage !== undefined) { return ImageSet.MediumImage.URL }
+    }
+
+    return noImage
   }
 
   priceDisplay() {
@@ -61,6 +73,9 @@ export default class Product extends React.Component {
   }
 
   render() {
+    if (this.props.ItemAttributes === undefined || this.props.ItemAttributes.Feature === undefined) {
+      return <div></div>
+    }
     return (
       <Row isColumn className='product'>
         {this.priceDisplay()}
