@@ -8,3 +8,7 @@ info.json
 app/googlec6c01967525fe5d3.html
 .env
 build
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

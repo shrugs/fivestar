@@ -1,7 +1,5 @@
 'use strict';
 
-require('dotenv').config();
-
 var express = require('express');
 
 /**
@@ -15,6 +13,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var config = require('./lib/config/config');
 
 var app = express();
+
+if (app.get('env') === 'development') {
+  require('dotenv').config();
+}
 
 // Express settings
 require('./lib/config/express')(app);
