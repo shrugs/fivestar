@@ -17,7 +17,7 @@ export default class Search extends React.Component {
       index: React.PropTypes.string,
       node: React.PropTypes.string,
       brand: React.PropTypes.string,
-      onlyAmazon: React.PropTypes.bool
+      onlyAmazon: React.PropTypes.string
     }),
 
     filters: React.PropTypes.arrayOf(
@@ -67,7 +67,7 @@ export default class Search extends React.Component {
 
   handleOnlyAmazonChange(isChecked) {
     // coerce to undefined so it's still falsy, and doesn't show up in url
-    const newValue = isChecked ? true : undefined
+    const newValue = isChecked ? 'true' : undefined
     this.setState({ onlyAmazon: newValue }, this.performSearch.bind(this))
   }
 
@@ -121,7 +121,7 @@ export default class Search extends React.Component {
                 <Switch
                   input={{
                     type: InputTypes.CHECKBOX,
-                    checked: !!this.state.onlyAmazon,
+                    checked: this.state.onlyAmazon === 'true',
                     onChange: (e) => this.handleOnlyAmazonChange(e.target.checked)
                   }}
                 />
