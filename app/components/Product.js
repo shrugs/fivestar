@@ -51,6 +51,10 @@ export default class Product extends React.Component {
     return noImage
   }
 
+  decodeURL(url) {
+    return decodeURIComponent(url)
+  }
+
   priceDisplay() {
     const { ItemAttributes, OfferSummary } = this.props
     const { ListPrice } = ItemAttributes
@@ -69,7 +73,7 @@ export default class Product extends React.Component {
   }
 
   handleViewProduct() {
-    window.open(this.props.DetailPageURL, '_blank')
+    window.open(this.decodeURL(this.props.DetailPageURL), '_blank')
   }
 
   render() {

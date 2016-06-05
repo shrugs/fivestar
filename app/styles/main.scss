@@ -89,6 +89,8 @@ button {
   justify-content: center;
 
   .SocialMediaShareButton {
+    cursor: pointer;
+
     margin-left: rem-calc(10px);
     margin-right: rem-calc(10px);
   }
