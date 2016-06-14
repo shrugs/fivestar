@@ -73,6 +73,9 @@ export default class Product extends React.Component {
   }
 
   handleViewProduct() {
+    if (window.ga) {
+      window.ga('send', 'event', 'amazon', 'clickthrough')
+    }
     window.open(this.decodeURL(this.props.DetailPageURL), '_blank')
   }
 
@@ -92,7 +95,11 @@ export default class Product extends React.Component {
             {this.props.ItemAttributes.Feature.slice(0, 3).map(f =>
               <li key={f}>{f.slice(0, 75) + (f.length > 75 ? '...' : '')}</li>
             )}
-            {this.props.ItemAttributes.Feature.length > 3 && <li><a onClick={this.handleViewProduct.bind(this)}>... read more</a></li>}
+            {this.props.ItemAttributes.Feature.length > 3 &&
+              <li>
+                <a onClick={this.handleViewProduct.bind(this)}>... read more</a>
+              </li>
+            }
           </ul>
           <Button isExpanded onClick={this.handleViewProduct.bind(this)}>View on Amazon</Button>
         </Row>

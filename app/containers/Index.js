@@ -4,25 +4,21 @@ import Helmet from 'react-helmet'
 import Search from 'components/Search'
 import ResultsList from 'components/ResultsList'
 
-import { Row, Column } from 'react-foundation';
+import { Row, Column } from 'react-foundation'
 
 import {
   ShareButtons,
   ShareCounts,
   generateShareIcon
-} from 'react-share';
+} from 'react-share'
 
 const {
   FacebookShareButton,
-  TwitterShareButton,
-} = ShareButtons;
+  TwitterShareButton
+} = ShareButtons
 
-const {
-  FacebookShareCount,
-} = ShareCounts;
-
-const FacebookIcon = generateShareIcon('facebook');
-const TwitterIcon = generateShareIcon('twitter');
+const FacebookIcon = generateShareIcon('facebook')
+const TwitterIcon = generateShareIcon('twitter')
 
 import bannerImage from 'images/banner.png'
 
@@ -68,7 +64,7 @@ class Index extends React.Component {
         <Row>
           <Column small={12} medium={10} centerOnMedium>
             <ResultsList buckets={this.props.results.buckets} />
-           </Column>
+          </Column>
         </Row>
         <Row>
           <Column small={12} medium={10} centerOnMedium>
@@ -77,13 +73,15 @@ class Index extends React.Component {
                 <div className='share-buttons-container'>
                   <FacebookShareButton
                     url='http://fivestar.io'
-                    title='fivestar | A Better Amazon Search'>
+                    title='fivestar | A Better Amazon Search'
+                  >
                     <FacebookIcon size={32} round />
                   </FacebookShareButton>
 
-                   <TwitterShareButton
+                  <TwitterShareButton
                     url='http://fivestar.io'
-                    title='fivestar | A Better Amazon Search'>
+                    title='fivestar | A Better Amazon Search'
+                  >
                     <TwitterIcon size={32} round />
                   </TwitterShareButton>
                 </div>

@@ -56,6 +56,9 @@ export default class Search extends React.Component {
   }
 
   performSearch() {
+    if (window.ga) {
+      window.ga('send', 'event', 'search', 'click', this.state)
+    }
     this.props.performSearch(this.state)
   }
 
@@ -77,8 +80,8 @@ export default class Search extends React.Component {
 
   handleFilterChange(filterType, newValue) {
     const paramName = {
-      'BrowseNode': 'node',
-      'Brand': 'brand'
+      BrowseNode: 'node',
+      Brand: 'brand'
     }[filterType]
 
     this.setState({
@@ -94,25 +97,24 @@ export default class Search extends React.Component {
   }
 
   render() {
-
     return (
       <div className='search-container'>
         <Row isColumn>
           <div className='input-group'>
-          <input
-            type='text'
-            className='input-group-field'
-            placeholder="'headphones', 'school laptop', 'toaster'"
-            value={this.state.query}
-            onKeyDown={this.handleKeyDown.bind(this)}
-            onChange={e => this.setState({ query: e.target.value })}
-          />
-          <div className='input-group-button'>
-            <Button type='submit' onClick={() => this.performSearch()}>
-              Search
-            </Button>
+            <input
+              type='text'
+              className='input-group-field'
+              placeholder="'headphones', 'school laptop', 'toaster'"
+              value={this.state.query}
+              onKeyDown={this.handleKeyDown.bind(this)}
+              onChange={e => this.setState({ query: e.target.value })}
+            />
+            <div className='input-group-button'>
+              <Button type='submit' onClick={() => this.performSearch()}>
+                Search
+              </Button>
+            </div>
           </div>
-        </div>
         </Row>
         <Row>
           {this.props.showFilters &&
@@ -133,53 +135,54 @@ export default class Search extends React.Component {
               <label>Department
                 <select
                   value={this.state.index || 'All'}
-                  onChange={e => this.handleIndexChange(e.target.value)}>
-                  <option value="All">All Depts.</option>
-                  <option value="Appliances">Appliances</option>
-                  <option value="MobileApps">Apps for Android</option>
-                  <option value="ArtsAndCrafts">Arts & Crafts</option>
-                  <option value="Automotive">Automotive</option>
-                  <option value="Baby">Baby</option>
-                  <option value="Beauty">Beauty</option>
-                  <option value="Books">Books</option>
-                  <option value="WirelessAccessories">Mobile & Acc.</option>
-                  <option value="Apparel">Clothing & Acc.</option>
-                  <option value="Collectibles">Collectibles</option>
-                  <option value="PCHardware">Computers</option>
-                  <option value="Electronics">Electronics</option>
-                  <option value="Grocery">Grocery & Food</option>
-                  <option value="HealthPersonalCare">Health & Personal Care</option>
-                  <option value="HomeGarden">Home & Garden</option>
-                  <option value="Industrial">Industrial & Sci.</option>
-                  <option value="Jewelry">Jewelry</option>
-                  <option value="KindleStore">Kindle Store</option>
-                  <option value="Kitchen">Kitchen</option>
-                  <option value="Magazines">Magazine Subscriptions</option>
-                  <option value="Miscellaneous">Miscellaneous</option>
-                  <option value="DigitalMusic">MP3 Music</option>
-                  <option value="Music">Music</option>
-                  <option value="MusicalInstruments">Musical Instruments</option>
-                  <option value="OfficeProducts">Office Products</option>
-                  <option value="OutdoorLiving">Outdoor Living</option>
-                  <option value="LawnGarden">Patio, Lawn & Garden</option>
-                  <option value="PetSupplies">Pet Supplies</option>
-                  <option value="Shoes">Shoes</option>
-                  <option value="Software">Software</option>
-                  <option value="SportingGoods">Sports & Outdoors</option>
-                  <option value="Tools">Tools & Home</option>
-                  <option value="Toys">Toys & Games</option>
-                  <option value="VideoGames">Video Games</option>
-                  <option value="Watches">Watches</option>
+                  onChange={e => this.handleIndexChange(e.target.value)}
+                >
+                  <option value='All'>All Depts.</option>
+                  <option value='Appliances'>Appliances</option>
+                  <option value='MobileApps'>Apps for Android</option>
+                  <option value='ArtsAndCrafts'>Arts & Crafts</option>
+                  <option value='Automotive'>Automotive</option>
+                  <option value='Baby'>Baby</option>
+                  <option value='Beauty'>Beauty</option>
+                  <option value='Books'>Books</option>
+                  <option value='WirelessAccessories'>Mobile & Acc.</option>
+                  <option value='Apparel'>Clothing & Acc.</option>
+                  <option value='Collectibles'>Collectibles</option>
+                  <option value='PCHardware'>Computers</option>
+                  <option value='Electronics'>Electronics</option>
+                  <option value='Grocery'>Grocery & Food</option>
+                  <option value='HealthPersonalCare'>Health & Personal Care</option>
+                  <option value='HomeGarden'>Home & Garden</option>
+                  <option value='Industrial'>Industrial & Sci.</option>
+                  <option value='Jewelry'>Jewelry</option>
+                  <option value='KindleStore'>Kindle Store</option>
+                  <option value='Kitchen'>Kitchen</option>
+                  <option value='Magazines'>Magazine Subscriptions</option>
+                  <option value='Miscellaneous'>Miscellaneous</option>
+                  <option value='DigitalMusic'>MP3 Music</option>
+                  <option value='Music'>Music</option>
+                  <option value='MusicalInstruments'>Musical Instruments</option>
+                  <option value='OfficeProducts'>Office Products</option>
+                  <option value='OutdoorLiving'>Outdoor Living</option>
+                  <option value='LawnGarden'>Patio, Lawn & Garden</option>
+                  <option value='PetSupplies'>Pet Supplies</option>
+                  <option value='Shoes'>Shoes</option>
+                  <option value='Software'>Software</option>
+                  <option value='SportingGoods'>Sports & Outdoors</option>
+                  <option value='Tools'>Tools & Home</option>
+                  <option value='Toys'>Toys & Games</option>
+                  <option value='VideoGames'>Video Games</option>
+                  <option value='Watches'>Watches</option>
                 </select>
               </label>
             </Column>
           }
           {this.props.filters && this.props.filters.filter(f => f.Bin.length > 0).map(f =>
-            <Column small={6} medium={6} key={f['@']['NarrowBy']}>
-              <label>{this.prettyNarrowBy(f['@']['NarrowBy'])}
+            <Column small={6} medium={6} key={f['@'].NarrowBy}>
+              <label>{this.prettyNarrowBy(f['@'].NarrowBy)}
                 <select onChange={e => this.handleFilterChange(f.Bin[0].BinParameter.Name, e.target.value)}>
                   <option value='none'>
-                    Every {this.prettyNarrowBy(f['@']['NarrowBy'])}
+                    Every {this.prettyNarrowBy(f['@'].NarrowBy)}
                   </option>
                   {f.Bin.map(b =>
                     <option value={b.BinParameter.Value} key={b.BinParameter.Value}>
