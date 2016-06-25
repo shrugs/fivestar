@@ -23,6 +23,7 @@ const envFlagPlugin = new webpack.DefinePlugin({
 })
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  filename: 'index.html',
   template: 'index.html',
   appMountId: 'root',
   title: 'fivestar | Better Amazon Search',
@@ -55,7 +56,7 @@ const configs = {
     plugins: [
       envFlagPlugin,
       new ExtractTextPlugin('styles.css'),
-      htmlWebpackPlugin,
+      htmlWebpackPlugin
     ],
     module: {
       loaders: [{
@@ -116,7 +117,7 @@ const configs = {
       }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.OccurenceOrderPlugin(),
-      htmlWebpackPlugin,
+      htmlWebpackPlugin
     ]
   }
 
