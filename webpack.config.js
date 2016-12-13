@@ -29,7 +29,7 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
   title: 'fivestar | Better Amazon Search',
   googleAnalytics: {
     trackingId: 'UA-49173715-1',
-    pageViewOnLoad: true
+    pageViewOnLoad: false
   }
 })
 

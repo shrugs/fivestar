@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
 import searchOnLocationChange from '../middleware/searchOnLocationChange'
+import gaPageview from '../middleware/gaPageview'
 
 import { browserHistory } from 'react-router'
 import { routerMiddleware } from 'react-router-redux'
@@ -15,7 +16,7 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     __DEV__ ?
-      applyMiddleware(searchOnLocationChange, thunk, routerMiddlewareInstance, logger) :
-      applyMiddleware(searchOnLocationChange, thunk, routerMiddlewareInstance)
+      applyMiddleware(searchOnLocationChange, gaPageview, thunk, routerMiddlewareInstance, logger) :
+      applyMiddleware(searchOnLocationChange, gaPageview, thunk, routerMiddlewareInstance)
   )
 }

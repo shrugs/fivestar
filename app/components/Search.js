@@ -8,6 +8,8 @@ import {
   InputTypes
 } from 'react-foundation'
 
+import { searchStateToGA } from '../utils/index'
+
 export default class Search extends React.Component {
 
   static propTypes = {
@@ -57,7 +59,7 @@ export default class Search extends React.Component {
 
   performSearch() {
     if (window.ga) {
-      window.ga('send', 'event', 'search', 'click', this.state)
+      window.ga('send', 'event', searchStateToGA(this.state))
     }
     this.props.performSearch(this.state)
   }

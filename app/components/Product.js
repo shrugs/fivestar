@@ -73,10 +73,11 @@ export default class Product extends React.Component {
   }
 
   handleViewProduct() {
+    const url = this.decodeURL(this.props.DetailPageURL)
     if (window.ga) {
-      window.ga('send', 'event', 'amazon', 'clickthrough')
+      window.ga('send', 'event', 'amazon', 'clickthrough', url)
     }
-    window.open(this.decodeURL(this.props.DetailPageURL), '_blank')
+    window.open(url, '_blank')
   }
 
   render() {
