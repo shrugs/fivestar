@@ -119,6 +119,7 @@ const configs = {
       }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.OccurenceOrderPlugin(),
+      new FaviconsWebpackPlugin('images/logo.png'),
       htmlWebpackPlugin
     ]
   }
