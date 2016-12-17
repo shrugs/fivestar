@@ -11,7 +11,7 @@ const ProductLink = ({ slug, children }) => (
       color={Colors.PRIMARY}
       onClick={() => {
         if (window.ga) {
-          window.ga.send({
+          window.ga('send', 'event', {
             eventCategory: 'recommended',
             eventAction: 'click',
             eventLabel: slug
