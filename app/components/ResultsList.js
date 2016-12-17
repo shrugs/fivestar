@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Column } from 'react-foundation'
 import Product from 'components/Product'
+import ExampleSearchList from 'components/ExampleSearchList'
 
 const ProductBucket = ({ items, minPrice }) => (
   <Row className='product-bucket'>
@@ -22,10 +23,21 @@ const ProductBucket = ({ items, minPrice }) => (
 export default class ResultsList extends React.Component {
 
   static propTypes = {
-    buckets: React.PropTypes.array
+    buckets: React.PropTypes.array,
+    show: React.PropTypes.bool
   }
 
   render() {
+    if (!this.props.show) {
+      // If we don't want to show the results list,
+      // show some suggestions instead.
+      return (
+        <div className='results-list-container'>
+          <ExampleSearchList />
+        </div>
+      )
+    }
+
     return (
       <div className='results-list-container'>
         {this.props.buckets && this.props.buckets.filter(b => b.items.length > 0).map(bucket =>

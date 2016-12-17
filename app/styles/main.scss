@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 @import "~foundation-sites/scss/foundation.scss";
 
+$fivestar-blue: #3bafda;
+$fivestar-dark-blue: #25A8D9;
+
+@import "./_settings.scss";
 @include foundation-flex-grid;
 @include foundation-flex-classes;
 @include foundation-everything;
 
-$fivestar-blue: #3bafda;
-$fivestar-dark-blue: #25A8D9;
 
 .bucket-price {
   display: flex;
@@ -72,6 +75,8 @@ $fivestar-dark-blue: #25A8D9;
 
 button {
   background-color: $fivestar-blue;
+  text-transform: uppercase;
+  font-weight: bold;
 
   &:active, &:hover, &:focus {
     background-color: $fivestar-dark-blue;
@@ -83,6 +88,7 @@ button {
 }
 
 .share-buttons-container {
+  margin-top: rem-calc(20px);
   margin-bottom: rem-calc(50px);
   display: flex;
   align-items: center;

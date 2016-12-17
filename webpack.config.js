@@ -6,6 +6,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 // [webpack-rails] must match config.webpack.dev_server.port
 const appRoot = path.join(__dirname, 'app')
@@ -56,6 +57,7 @@ const configs = {
     plugins: [
       envFlagPlugin,
       new ExtractTextPlugin('styles.css'),
+      new FaviconsWebpackPlugin('images/logo.png'),
       htmlWebpackPlugin
     ],
     module: {

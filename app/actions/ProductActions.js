@@ -10,7 +10,7 @@ export function beginSearch() {
 }
 
 export function commitParamsToHistory(params) {
-  return push({query: params})
+  return push({ query: params })
 }
 
 export const NEW_RESULTS = 'NEW_RESULTS'

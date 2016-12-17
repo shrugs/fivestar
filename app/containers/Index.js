@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { IndexLink } from 'react-router'
 import Helmet from 'react-helmet'
 import Search from 'components/Search'
 import ResultsList from 'components/ResultsList'
@@ -8,7 +9,6 @@ import { Row, Column } from 'react-foundation'
 
 import {
   ShareButtons,
-  ShareCounts,
   generateShareIcon
 } from 'react-share'
 
@@ -28,7 +28,6 @@ import {
 } from 'actions'
 
 class Index extends React.Component {
-
   render() {
     const params = this.props.params
 
@@ -36,12 +35,15 @@ class Index extends React.Component {
 
     const { buckets } = this.props.results
     const hasResults = (buckets && buckets.length > 0)
+
     return (
       <Row className='display' isColumn>
         <Helmet title={pageTitle} />
         <Row className='banner-image-container'>
           <Column small={10} medium={8} centerOnSmall>
-            <img alt='fivestar logo' src={bannerImage} />
+            <IndexLink to='/'>
+              <img alt='fivestar logo' src={bannerImage} />
+            </IndexLink>
           </Column>
         </Row>
         <Row>
@@ -63,7 +65,10 @@ class Index extends React.Component {
         </Row>
         <Row>
           <Column small={12} medium={10} centerOnMedium>
-            <ResultsList buckets={this.props.results.buckets} />
+            <ResultsList
+              buckets={this.props.results.buckets}
+              show={this.props.hasSearched}
+            />
           </Column>
         </Row>
         <Row>
@@ -97,7 +102,8 @@ class Index extends React.Component {
 
 export default connect(state => ({
   params: state.routing.locationBeforeTransitions.query,
-  results: state.results
+  results: state.results,
+  hasSearched: state.resultsDisplay.show
 }), {
   commitParamsToHistory,
   clearResults

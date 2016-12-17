@@ -20,6 +20,17 @@ function resultsReducer(state = [], action) {
   }
 }
 
+function resultsDisplayReducer(state = { show: false }, action) {
+  switch (action.type) {
+    case NEW_RESULTS:
+      return { show: true }
+    case CLEAR_RESULTS:
+      return { show: false }
+    default:
+      return state
+  }
+}
+
 function paramsReducer(state = { query: '' }, action) {
   switch (action.type) {
     case MIRROR_PARAMS:
@@ -42,15 +53,16 @@ function loadingReducer(state = { loading: false }, action) {
     case NEW_RESULTS:
       NProgress.done()
       return { loading: false }
+    default:
+      return state
   }
-
-  return state
 }
 
 const rootReducer = combineReducers({
   params: paramsReducer,
   results: resultsReducer,
   loading: loadingReducer,
+  resultsDisplay: resultsDisplayReducer,
   routing
 })
 

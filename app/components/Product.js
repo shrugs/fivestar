@@ -60,12 +60,14 @@ export default class Product extends React.Component {
     const { ListPrice } = ItemAttributes
     const { LowestNewPrice, TotalNew } = OfferSummary
 
+    const normalPrice = ListPrice ? ListPrice.FormattedPrice : LowestNewPrice.FormattedPrice
+
     return (
       <Row isColumn className='price-display'>
         <Row><h4 className='lowest-new-price'>{LowestNewPrice.FormattedPrice}</h4></Row>
         <Row>
           <p className='num-available'>
-            {`normally ${ListPrice.FormattedPrice}, ${TotalNew} available`}
+            {`normally ${normalPrice}, ${TotalNew} available`}
           </p>
         </Row>
       </Row>
