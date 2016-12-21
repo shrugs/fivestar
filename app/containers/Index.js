@@ -47,6 +47,13 @@ class Index extends React.Component {
           </Column>
         </Row>
         <Row>
+          <Column>
+            <h3 className='text-center help-text tagline'>
+              fivestar is a better Amazon search
+            </h3>
+          </Column>
+        </Row>
+        <Row>
           <Column small={12} medium={10} centerOnMedium>
             <Search
               showFilters={hasResults}
