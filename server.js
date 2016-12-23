@@ -18,6 +18,17 @@ if (app.get('env') === 'development') {
   require('dotenv').config();
 }
 
+// Redirect to HTTPS
+app.use(function (req, res, next) {
+  // Insecure request?
+  if (req.get('x-forwarded-proto') === 'http') {
+    // Redirect to https://
+    return res.redirect('https://' + req.get('host') + req.url);
+  }
+
+  next();
+});
+
 // Express settings
 require('./lib/config/express')(app);
 
