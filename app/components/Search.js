@@ -106,7 +106,7 @@ export default class Search extends React.Component {
             <input
               type='text'
               className='input-group-field'
-              placeholder="'headphones', 'school laptop', 'toaster'"
+              placeholder="headphones, school laptop, toaster"
               value={this.state.query}
               onKeyDown={this.handleKeyDown.bind(this)}
               onChange={e => this.setState({ query: e.target.value })}
