@@ -5,12 +5,13 @@ import {
   Column,
   Button,
   Switch,
-  InputTypes
+  InputTypes,
+  Colors,
 } from 'react-foundation'
 
 import { searchStateToGA } from '../utils/index'
 
-export default class Search extends React.Component {
+export default class SearchBar extends React.Component {
 
   static propTypes = {
     showFilters: React.PropTypes.bool,
@@ -102,7 +103,7 @@ export default class Search extends React.Component {
     return (
       <div className='search-container'>
         <Row isColumn>
-          <div className='input-group'>
+          <div className='input-group search-bar-container'>
             <input
               type='text'
               className='input-group-field'
@@ -112,7 +113,11 @@ export default class Search extends React.Component {
               onChange={e => this.setState({ query: e.target.value })}
             />
             <div className='input-group-button'>
-              <Button type='submit' onClick={() => this.performSearch()}>
+              <Button
+                type='submit'
+                color={Colors.PRIMARY}
+                onClick={() => this.performSearch()}
+              >
                 Search
               </Button>
             </div>

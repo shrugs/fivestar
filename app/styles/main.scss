@@ -1,15 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 @import "~foundation-sites/scss/foundation.scss";
 
-$fivestar-blue: #3bafda;
-$fivestar-dark-blue: #25A8D9;
+$fivestar-primary: #FBEF7E;
+$fivestar-primary-dark: #FFEC3D;  // @TODO(shrugs) confirm with niko
+$fivestar-complement: #515360;
 
 @import "./_settings.scss";
 @include foundation-flex-grid;
 @include foundation-flex-classes;
 @include foundation-everything;
 
+@import 'navbar.scss';
+@import 'tagline.scss';
+@import 'searchbar.scss';
 
 .bucket-price {
   display: flex;
@@ -60,13 +64,8 @@ $fivestar-dark-blue: #25A8D9;
 .help-text {
   font-style: none;
   font-size: 1rem;
-  color: $dark-gray;
-  margin-top: rem-calc(30px);
   text-align: center;
-}
-
-.tagline {
-  font-size: 1.3rem;
+  color: $dark-gray;
 }
 
 .banner-image-container {
@@ -78,12 +77,12 @@ $fivestar-dark-blue: #25A8D9;
 }
 
 button {
-  background-color: $fivestar-blue;
+  background-color: $fivestar-primary;
   text-transform: uppercase;
   font-weight: bold;
 
   &:active, &:hover, &:focus {
-    background-color: $fivestar-dark-blue;
+    background-color: $fivestar-primary-dark;
   }
 }
 
@@ -97,6 +96,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  float: right;
 
   .SocialMediaShareButton {
     cursor: pointer;

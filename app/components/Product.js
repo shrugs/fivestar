@@ -1,3 +1,7 @@
+// @TODO(shrugs) - refactor this into a more generic component,
+//   removing all of the amazon-specific nonsense
+// Create a viewmodel (server-side?) to map from amazon's response product to this new model
+
 import React from 'react'
 import { Row, Column, Button } from 'react-foundation'
 

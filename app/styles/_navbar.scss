@@ -1,0 +1,13 @@
+.navbar {
+  height: rem-calc(70px);
+
+  .navbar-inner {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  height: 100%;
+}

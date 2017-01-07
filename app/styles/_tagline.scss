@@ -1,0 +1,18 @@
+.tagline-container {
+  margin-top: rem-calc(20px);
+}
+
+.tagline {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 1.7rem;
+  color: $fivestar-complement;
+}
+
+.subtagline {
+  text-align: center;
+  margin: 0;
+  font-style: none;
+  font-size: 1rem;
+  color: $dark-gray;
+}

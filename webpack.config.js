@@ -27,6 +27,7 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
   filename: 'index.html',
   template: 'index.html',
   appMountId: 'root',
+  mobile: true,
   title: 'fivestar | Better Amazon Search',
   googleAnalytics: {
     trackingId: 'UA-49173715-1',

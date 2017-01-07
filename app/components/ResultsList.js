@@ -3,6 +3,7 @@ import { Row, Column } from 'react-foundation'
 import Product from 'components/Product'
 import ExampleSearchList from 'components/ExampleSearchList'
 
+// @TODO(shrugs) - replace ProductBucket with ResultsSection
 const ProductBucket = ({ items, minPrice }) => (
   <Row className='product-bucket'>
     <Column small={2} className='bucket-price'>
@@ -24,13 +25,20 @@ export default class ResultsList extends React.Component {
 
   static propTypes = {
     buckets: React.PropTypes.array,
-    show: React.PropTypes.bool
+    show: React.PropTypes.bool,
+    forQuery: React.PropTypes.string
   }
 
   render() {
-    if (!this.props.show) {
+    const {
+      buckets,
+      show,
+      forQuery
+    } = this.props
+
+    if (!show) {
       // If we don't want to show the results list,
-      // show some suggestions instead.
+      // show some top picks instead.
       return (
         <div className='results-list-container'>
           <ExampleSearchList />
@@ -38,13 +46,14 @@ export default class ResultsList extends React.Component {
       )
     }
 
+
     return (
       <div className='results-list-container'>
-        {this.props.buckets && this.props.buckets.filter(b => b.items.length > 0).map(bucket =>
+        {buckets && buckets.filter(b => b.items.length > 0).map(bucket =>
           <ProductBucket key={bucket.minPrice} {...bucket} />
         )}
-        {(!this.props.buckets || this.props.buckets.length < 1) &&
-          <p className='text-center'>No results found.</p>
+        {(!buckets || buckets.length < 1) &&
+          <p className='text-center'>No results for <strong>{forQuery}</strong>.</p>
         }
       </div>
     )
