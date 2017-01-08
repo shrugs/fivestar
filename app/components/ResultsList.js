@@ -1,19 +1,19 @@
 import React from 'react'
 import { Row, Column } from 'react-foundation'
-import Product from 'components/Product'
+import ResultsItem from 'components/ResultsItem'
 import ExampleSearchList from 'components/ExampleSearchList'
 
 // @TODO(shrugs) - replace ProductBucket with ResultsSection
-const ProductBucket = ({ items, minPrice }) => (
+const ProductBucket = ({ items, header }) => (
   <Row className='product-bucket'>
     <Column small={2} className='bucket-price'>
-      <h4>{`$ ${minPrice / 100} +`}</h4>
+      <h4>{header}</h4>
     </Column>
     <Column small={10}>
       <Row>
         {items && items.map(item =>
-          <Column key={item.ASIN} small={12} medium={6}>
-            <Product {...item} />
+          <Column key={item.key} small={12} medium={6}>
+            <ResultsItem {...item} />
           </Column>
         )}
       </Row>
@@ -50,7 +50,7 @@ export default class ResultsList extends React.Component {
     return (
       <div className='results-list-container'>
         {buckets && buckets.filter(b => b.items.length > 0).map(bucket =>
-          <ProductBucket key={bucket.minPrice} {...bucket} />
+          <ProductBucket key={bucket.key} {...bucket} />
         )}
         {(!buckets || buckets.length < 1) &&
           <p className='text-center'>No results for <strong>{forQuery}</strong>.</p>

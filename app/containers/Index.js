@@ -13,13 +13,9 @@ class Index extends React.Component {
   render() {
     const {
       params,
-      results,
-      showResults
+      buckets,
+      showResults,
     } = this.props
-
-    const {
-      buckets
-    } = results
 
     const pageTitle = generatePageTitle(params.q)
 
@@ -33,8 +29,6 @@ class Index extends React.Component {
           <Column small={12} medium={10} centerOnMedium>
             <Search
               showFilters={hasResults}
-              performSearch={this.props.commitParamsToHistory}
-              clearResults={this.props.clearResults}
               params={params}
               // filters={this.props.results.narrowNodes}
             />
@@ -57,6 +51,6 @@ class Index extends React.Component {
 
 export default connect(state => ({
   params: state.routing.locationBeforeTransitions.query,
-  results: state.results,
+  buckets: state.results,
   showResults: state.resultsDisplay.show
 }), null)(Index)

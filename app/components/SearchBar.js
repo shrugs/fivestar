@@ -125,8 +125,8 @@ export default class SearchBar extends React.Component {
         </Row>
         <Row>
           {this.props.showFilters &&
-            <Column small={12} medium={6}>
-              <label>Only Fulfilled by Amazon
+            <Column small={5} medium={6}>
+              <label>Only Amazon Fulfilled
                 <Switch
                   input={{
                     type: InputTypes.CHECKBOX,
@@ -138,7 +138,7 @@ export default class SearchBar extends React.Component {
             </Column>
           }
           {this.props.showFilters &&
-            <Column small={12} medium={6}>
+            <Column small={7} medium={6}>
               <label>Department
                 <select
                   value={this.state.index || 'All'}

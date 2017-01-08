@@ -2,6 +2,8 @@ import axios from 'axios'
 
 import { push } from 'react-router-redux'
 
+import fromAmazon from 'utils/viewmodels/amazon'
+
 export const BEGIN_SEARCH = 'BEGIN_SEARCH'
 export function beginSearch() {
   return {
@@ -35,6 +37,7 @@ export function getSearchResults(params) {
       params: params
     })
     .then(resp => resp.data)
+    .then(results => fromAmazon(results.buckets))
     .then(results => {
       dispatch({
         type: NEW_RESULTS,

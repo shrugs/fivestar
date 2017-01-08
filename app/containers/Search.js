@@ -26,6 +26,6 @@ export default connect(state => ({
   params: state.routing.locationBeforeTransitions.query,
   results: state.results,
 }), {
-  commitParamsToHistory,
+  performSearch: commitParamsToHistory,
   clearResults
 })(Search)
