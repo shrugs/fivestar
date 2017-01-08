@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import Search from 'containers/Search'
 import ResultsList from 'components/ResultsList'
-import Navbar from 'components/Navbar'
 
 import { Row, Column } from 'react-foundation'
 
@@ -22,9 +21,8 @@ class Index extends React.Component {
     const hasResults = (buckets && buckets.length > 0)
 
     return (
-      <Row className='display' isColumn>
+      <Row isColumn>
         <Helmet title={pageTitle} />
-        <Navbar />
         <Row>
           <Column small={12} medium={10} centerOnMedium>
             <Search

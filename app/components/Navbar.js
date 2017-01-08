@@ -1,20 +1,8 @@
 import React, { Component } from 'react'
 import { IndexLink } from 'react-router'
 import { Row, Column } from 'react-foundation'
-import { colors, tagline } from 'utils'
 
-import {
-  ShareButtons,
-  generateShareIcon
-} from 'react-share'
-
-const {
-  FacebookShareButton,
-  TwitterShareButton
-} = ShareButtons
-
-const FacebookIcon = generateShareIcon('facebook')
-const TwitterIcon = generateShareIcon('twitter')
+import ShareButtons from 'components/ShareButtons'
 
 import bannerImage from 'images/banner.png'
 
@@ -30,35 +18,7 @@ export default class Navbar extends Component {
               </IndexLink>
             </Column>
             <div>
-              <div className="share-buttons-container">
-                <FacebookShareButton
-                  url='http://fivestar.io'
-                  title={`fivestar | ${tagline}`}
-                >
-                  <FacebookIcon
-                    size={32}
-                    iconBgStyle={{
-                      fill: colors.Primary
-                    }}
-                    logoFillColor={colors.Complement}
-                    round
-                  />
-                </FacebookShareButton>
-
-                <TwitterShareButton
-                  url='http://fivestar.io'
-                  title={`fivestar | ${tagline}`}
-                >
-                  <TwitterIcon
-                    size={32}
-                    iconBgStyle={{
-                      fill: colors.Primary
-                    }}
-                    logoFillColor={colors.Complement}
-                    round
-                  />
-                </TwitterShareButton>
-              </div>
+              <ShareButtons />
             </div>
           </Row>
         </Column>

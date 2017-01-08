@@ -16,35 +16,13 @@ $fivestar-complement: #515360;
 @import 'searchbar.scss';
 @import 'results_section.scss';
 @import 'results_item.scss';
-
-.bucket-price {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  h4 {
-    font-weight: bold;
-  }
-}
-
-.product-bucket {
-  margin-bottom: rem-calc(20px);
-}
+@import 'footer.scss';
 
 .help-text {
   font-style: none;
   font-size: 1rem;
   text-align: center;
   color: $dark-gray;
-}
-
-.banner-image-container {
-  margin-top: 6rem;
-}
-
-.search-container {
-  margin-top: rem-calc(40px);
 }
 
 button {

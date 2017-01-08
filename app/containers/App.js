@@ -1,10 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import Navbar from 'components/Navbar'
+import Footer from 'components/Footer'
+
 class App extends React.Component {
   render() {
     return (
-      <div>{this.props.children}</div>
+      <div>
+        <Navbar />
+        {this.props.children}
+        <Footer />
+      </div>
     )
   }
 }

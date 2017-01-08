@@ -1,0 +1,14 @@
+.footer {
+  background-color: $fivestar-complement;
+  color: $fivestar-primary;
+
+  .logo {
+    height: rem-calc(50px);
+    margin-top: rem-calc(15px);
+  }
+
+  text-align: center;
+  @include breakpoint(medium) {
+    text-align: left;
+  }
+}
