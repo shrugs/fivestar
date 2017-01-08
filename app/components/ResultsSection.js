@@ -1,27 +1,22 @@
 import React, { Component } from 'react'
+import { Row, Column } from 'react-foundation'
 import { connect } from 'react-redux'
 
-export class ResultsSection extends Component {
-  static propTypes = {
-    heading: React.PropTypes.string,
-    items: React.PropTypes.array,
-  }
+import ResultsItem from 'components/ResultsItem'
 
-  render() {
-    return (
-      <Row isColumn>
-        <Row isColumn>
-          <h3>{heading}</h3>
-        </Row>
-        <Row>
-          {items.map(i =>
-            <div>Item</div>
-          )}
-        </Row>
-      </Row>
-    );
-  }
-}
+const ResultsSection = ({ heading, items }) => (
+  <Row className='results-section' isColumn>
+    <Row className='heading-container' isColumn>
+      <h3 className='heading'>{heading}</h3>
+    </Row>
+    <Row>
+      {items.map(item =>
+        <Column key={item.key} small={6} medium={3}>
+          <ResultsItem {...item} />
+        </Column>
+      )}
+    </Row>
+  </Row>
+)
 
-// @TODO(shrugs) - action for showing item modal here
-export defualt connect(null, null)(ResultsSection)
+export default ResultsSection

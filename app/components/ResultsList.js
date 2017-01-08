@@ -1,25 +1,8 @@
 import React from 'react'
-import { Row, Column } from 'react-foundation'
-import ResultsItem from 'components/ResultsItem'
-import ExampleSearchList from 'components/ExampleSearchList'
+import { Row } from 'react-foundation'
 
-// @TODO(shrugs) - replace ProductBucket with ResultsSection
-const ProductBucket = ({ items, header }) => (
-  <Row className='product-bucket'>
-    <Column small={2} className='bucket-price'>
-      <h4>{header}</h4>
-    </Column>
-    <Column small={10}>
-      <Row>
-        {items && items.map(item =>
-          <Column key={item.key} small={12} medium={6}>
-            <ResultsItem {...item} />
-          </Column>
-        )}
-      </Row>
-    </Column>
-  </Row>
-)
+import ResultsSection from 'components/ResultsSection'
+import ExampleSearchList from 'components/ExampleSearchList'
 
 export default class ResultsList extends React.Component {
 
@@ -48,14 +31,14 @@ export default class ResultsList extends React.Component {
 
 
     return (
-      <div className='results-list-container'>
+      <Row className='results-list-container' isColumn>
         {buckets && buckets.filter(b => b.items.length > 0).map(bucket =>
-          <ProductBucket key={bucket.key} {...bucket} />
+          <ResultsSection key={bucket.key} {...bucket} />
         )}
         {(!buckets || buckets.length < 1) &&
           <p className='text-center'>No results for <strong>{forQuery}</strong>.</p>
         }
-      </div>
+      </Row>
     )
   }
 }

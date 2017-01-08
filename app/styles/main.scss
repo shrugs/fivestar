@@ -14,6 +14,8 @@ $fivestar-complement: #515360;
 @import 'navbar.scss';
 @import 'tagline.scss';
 @import 'searchbar.scss';
+@import 'results_section.scss';
+@import 'results_item.scss';
 
 .bucket-price {
   display: flex;
@@ -28,37 +30,6 @@ $fivestar-complement: #515360;
 
 .product-bucket {
   margin-bottom: rem-calc(20px);
-}
-
-.price-display {
-  text-align: center;
-
-  .lowest-new-price, .num-available {
-    width: 100%;
-    margin-bottom: rem-calc(5px);
-  }
-
-  .lowest-new-price {
-    font-weight: bold;
-    font-size: 3.5rem;
-  }
-
-  .num-available {
-    font-size: 0.8rem;
-    color: $dark-gray;
-  }
-}
-
-.product {
-  img {
-    max-height: 400px;
-  }
-  .title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 1.3rem;
-    font-weight: bold;
-  }
 }
 
 .help-text {

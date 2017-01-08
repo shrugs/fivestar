@@ -1,0 +1,29 @@
+.results-item {
+  box-shadow: 0px 2px 6px 2px $medium-gray;
+  border-radius: rem-calc(6px);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: rem-calc(11rem);
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: top center;
+
+  .view-button {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .price-display {
+    float: right;
+    font-size: 0.8rem;
+    padding: rem-calc(5px) rem-calc(15px);
+    background-color: $fivestar-primary;
+  }
+}

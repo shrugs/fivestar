@@ -1,0 +1,16 @@
+.results-section {
+
+  margin-bottom: rem-calc(20px);
+
+  .heading-container {
+    margin-bottom: rem-calc(15px);
+  }
+
+  .heading {
+    float: left;
+    padding: rem-calc(5px) rem-calc(15px);
+    padding-right: rem-calc(60px);
+    background-color: $fivestar-primary;
+    margin-bottom: 0;
+  }
+}

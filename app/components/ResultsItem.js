@@ -3,7 +3,7 @@
 // Create a viewmodel (server-side?) to map from amazon's response product to this new model
 
 import React from 'react'
-import { Row, Column, Button } from 'react-foundation'
+import { Row, Column, Button, Colors } from 'react-foundation'
 
 export default class ResultsItem extends React.Component {
 
@@ -14,14 +14,6 @@ export default class ResultsItem extends React.Component {
     image: React.PropTypes.string,
     details: React.PropTypes.arrayOf(React.PropTypes.string),
     formattedPrice: React.PropTypes.string,
-  }
-
-  priceDisplay() {
-    return (
-      <Row isColumn className='price-display'>
-        <Row isColumn><h4 className='lowest-new-price'>{this.props.formattedPrice}</h4></Row>
-      </Row>
-    )
   }
 
   handleViewProduct() {
@@ -36,20 +28,20 @@ export default class ResultsItem extends React.Component {
 
   render() {
     return (
-      <Row isColumn className='product'>
-        {this.priceDisplay()}
-        <Row isColumn>
-          <img alt='product' src={this.props.image} />
-        </Row>
-        <Row isColumn>
-          <h3 className='title'>{this.props.title}</h3>
-          <ul>
-            {this.props.details.map(d =>
-              <li key={d}>{d}</li>
-            )}
-          </ul>
-          <Button isExpanded onClick={this.handleViewProduct.bind(this)}>View</Button>
-        </Row>
+      <Row isColumn>
+        <div className='results-item' style={{ backgroundImage: `url(${this.props.image})` }}>
+          <div className='price-display-container'>
+            <h4 className='price-display'>{this.props.formattedPrice}</h4>
+          </div>
+          <Button
+            color={Colors.PRIMARY}
+            onClick={this.handleViewProduct.bind(this)}
+            className='view-button'
+            isExpanded
+          >
+            View
+          </Button>
+        </div>
       </Row>
     )
   }

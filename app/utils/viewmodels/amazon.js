@@ -74,7 +74,7 @@ function formattedPrice(item) {
 export default buckets => (
   buckets.map(b => ({
     key: b.minPrice,
-    header: `$ ${b.minPrice / 100} +`,
+    heading: `$ ${b.minPrice / 100} +`,
     items: b.items.map(item => ({
       key: key(item),
       title: title(item),
