@@ -10,7 +10,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <Row className='navbar align-center'>
-        <Column small={12} medium={10}>
+        <Column small={12}>
           <Row className='navbar-inner'>
             <Column small={6}>
               <IndexLink to='/'>

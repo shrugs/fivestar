@@ -6,6 +6,11 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .share-buttons-container {
+    margin-top: rem-calc(20px);
+    margin-bottom: rem-calc(50px);
+  }
 }
 
 .logo {

@@ -17,6 +17,7 @@ $fivestar-complement: #515360;
 @import 'results_section.scss';
 @import 'results_item.scss';
 @import 'footer.scss';
+@import 'share_buttons.scss';
 
 .help-text {
   font-style: none;
@@ -39,18 +40,6 @@ button {
   margin-top: rem-calc(30px);
 }
 
-.share-buttons-container {
-  margin-top: rem-calc(20px);
-  margin-bottom: rem-calc(50px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  float: right;
-
-  .SocialMediaShareButton {
-    cursor: pointer;
-
-    margin-left: rem-calc(10px);
-    margin-right: rem-calc(10px);
-  }
+.results-container {
+  min-height: 70vh;
 }

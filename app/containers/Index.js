@@ -32,7 +32,7 @@ class Index extends React.Component {
             />
           </Column>
         </Row>
-        <Row>
+        <Row className='results-container'>
           <Column small={12} medium={10} centerOnMedium>
             <ResultsList
               buckets={buckets}

@@ -6,7 +6,7 @@ import ShareButtons from 'components/ShareButtons'
 import bannerImage from 'images/banner.png'
 
 const Footer = () => (
-  <Row className='footer'>
+  <Row className='align-cener footer'>
     <Column small={12} medium={6}>
       <Row isColumn>
         <IndexLink to='/'>
@@ -23,7 +23,7 @@ const Footer = () => (
         <Link to='/'>Copyright 2017</Link>
       </Row>
     </Column>
-    <Column small={12} medium={6}>
+    <Column small={12} medium={6} className='footer-share-buttons-container'>
       <ShareButtons />
     </Column>
   </Row>
