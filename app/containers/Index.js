@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
 import Search from 'containers/Search'
 import ResultsList from 'components/ResultsList'
-import ResultModal from 'containers/ResultModal'
+// import ResultModal from 'containers/ResultModal'
 
 import { Row, Column } from 'react-foundation'
 

@@ -17,14 +17,14 @@ class ResultsItem extends React.Component {
   }
 
   handleViewProduct() {
-    this.props.showResultDetails(this.props.item);
-    // const url = this.props.detailPageUrl
+    // this.props.showResultDetails(this.props.item);
+    const url = this.props.detailPageUrl
 
-    // if (window.ga) {
-    //   window.ga('send', 'event', 'amazon', 'clickthrough', url)
-    // }
+    if (window.ga) {
+      window.ga('send', 'event', 'amazon', 'clickthrough', url)
+    }
 
-    // window.open(url, '_blank')
+    window.open(url, '_blank')
   }
 
   render() {

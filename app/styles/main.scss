@@ -32,6 +32,7 @@ button {
   background-color: $fivestar-primary;
   text-transform: uppercase;
   font-weight: bold;
+  outline: none;
 
   &:active, &:hover, &:focus {
     background-color: $fivestar-primary-dark;
