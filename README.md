@@ -4,4 +4,19 @@ FiveStar finds the best Amazon product in a domain, broken down by budget.
 
 It was covered by [TechCrunch](http://techcrunch.com/2014/06/03/fivestar-finds-the-best-products-on-amazon-from-any-category-on-any-budget/)!
 
-If you'd like to run your own instance, you need an info.json in lib/config with api keys from Amazon's Product Advertising API under the keys `secretKey`, `accessKey`, and `trackingID`.
+## Install
+
+1. Clone the repo
+2. Create a `.env` with valid amazon product advertising credentials
+```
+PRODUCT_ADVERTISING_ACCESS_KEY=
+PRODUCT_ADVERTISING_SECRET_KEY=
+PRODUCT_ADVERTISING_TRACKING_ID=
+```
+2. `npm i`
+3. `npm start` runs the api server
+4. `npm run dev` runs the webpack dev server for serving the frontend
+5. visit `localhost:3000` to see everything working
+6. `npm run prod` builds the frontend into a bundle. always run this before deploying anywhere
+7. Note, I haven't actually tested this process, so there might be some gotchas.
+
