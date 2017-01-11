@@ -13,6 +13,15 @@
   }
 }
 
-.logo {
-  height: 100%;
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+
+  a {
+    height: 70%;
+  }
+
+  .logo {
+    height: 100%;
+  }
 }

@@ -1,11 +1,11 @@
-// @TODO(shrugs) - refactor this into a more generic component,
-//   removing all of the amazon-specific nonsense
-// Create a viewmodel (server-side?) to map from amazon's response product to this new model
-
 import React from 'react'
+import { connect } from 'react-redux'
 import { Row, Column, Button, Colors } from 'react-foundation'
+import {
+  showResultDetails
+} from 'actions/ModalActions'
 
-export default class ResultsItem extends React.Component {
+class ResultsItem extends React.Component {
 
   static propTypes = {
     title: React.PropTypes.string,
@@ -17,13 +17,14 @@ export default class ResultsItem extends React.Component {
   }
 
   handleViewProduct() {
-    const url = this.props.detailPageUrl
+    this.props.showResultDetails(this.props.item);
+    // const url = this.props.detailPageUrl
 
-    if (window.ga) {
-      window.ga('send', 'event', 'amazon', 'clickthrough', url)
-    }
+    // if (window.ga) {
+    //   window.ga('send', 'event', 'amazon', 'clickthrough', url)
+    // }
 
-    window.open(url, '_blank')
+    // window.open(url, '_blank')
   }
 
   render() {
@@ -46,3 +47,7 @@ export default class ResultsItem extends React.Component {
     )
   }
 }
+
+export default connect(null, {
+  showResultDetails
+})(ResultsItem)

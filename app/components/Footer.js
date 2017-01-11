@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { Row, Column } from 'react-foundation'
-import { Link, IndexLink } from 'react-router'
 
 import ShareButtons from 'components/ShareButtons'
-import bannerImage from 'images/banner.png'
+import Logo from 'components/Logo'
 
 const Footer = () => (
   <Row className='align-cener footer'>
     <Column small={12} medium={6}>
-      <Row isColumn>
-        <IndexLink to='/'>
-          <img className='logo' alt='fivestar logo' src={bannerImage} />
-        </IndexLink>
+      <Row>
+        <Logo size={12} alt='alt' />
       </Row>
       <Row isColumn>
         <Link to='/'>Contact</Link>

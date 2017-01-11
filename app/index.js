@@ -6,7 +6,6 @@ import Root from 'containers/Root'
 import configureStore from 'reducers/configure-store'
 
 import 'styles/main.scss'
-import 'styles/nprogress.css'
 
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)

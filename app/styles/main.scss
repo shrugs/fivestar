@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-@import "~foundation-sites/scss/foundation.scss";
+@import '~foundation-sites/scss/foundation.scss';
 
 $fivestar-primary: #FBEF7E;
 $fivestar-primary-dark: #FFEC3D;  // @TODO(shrugs) confirm with niko
@@ -10,6 +10,8 @@ $fivestar-complement: #515360;
 @include foundation-flex-grid;
 @include foundation-flex-classes;
 @include foundation-everything;
+
+@import 'nprogress.scss';
 
 @import 'navbar.scss';
 @import 'tagline.scss';

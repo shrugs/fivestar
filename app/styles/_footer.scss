@@ -4,14 +4,17 @@
   background-color: $fivestar-complement;
   color: $fivestar-primary;
 
-  .logo {
+  .logo-wrapper {
     height: rem-calc(50px);
-    margin-top: rem-calc(15px);
+    justify-content: center;
   }
 
   text-align: center;
   @include breakpoint(medium) {
     text-align: left;
+    .logo-wrapper {
+      justify-content: flex-start;
+    }
   }
 
   .footer-share-buttons-container {

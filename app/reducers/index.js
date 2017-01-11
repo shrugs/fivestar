@@ -9,6 +9,8 @@ import {
   CLEAR_RESULTS
 } from '../actions'
 
+import modalReducer from './modalReducer'
+
 function resultsReducer(state = [], action) {
   switch (action.type) {
     case NEW_RESULTS:
@@ -63,6 +65,7 @@ const rootReducer = combineReducers({
   results: resultsReducer,
   loading: loadingReducer,
   resultsDisplay: resultsDisplayReducer,
+  modal: modalReducer,
   routing
 })
 

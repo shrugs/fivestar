@@ -10,7 +10,9 @@
   height: rem-calc(11rem);
   background-size: 80%;
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: center center;
+
+  margin-bottom: rem-calc(15px);
 
   .view-button {
     margin: 0;
