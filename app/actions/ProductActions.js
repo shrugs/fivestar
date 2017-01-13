@@ -41,7 +41,13 @@ export function getSearchResults(params) {
     .then(results => {
       dispatch({
         type: NEW_RESULTS,
-        results
+        payload: results
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: NEW_RESULTS,
+        payload: []
       })
     })
   }

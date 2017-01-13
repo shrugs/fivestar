@@ -17,7 +17,7 @@ class Index extends React.Component {
       showResults,
     } = this.props
 
-    const pageTitle = generatePageTitle(params.q)
+    const pageTitle = generatePageTitle(params.query)
 
     const hasResults = (buckets && buckets.length > 0)
 
@@ -38,7 +38,7 @@ class Index extends React.Component {
             <ResultsList
               buckets={buckets}
               show={showResults}
-              forQuery={params.q}
+              forQuery={params.query}
             />
           </Column>
         </Row>

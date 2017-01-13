@@ -14,7 +14,7 @@ import modalReducer from './modalReducer'
 function resultsReducer(state = [], action) {
   switch (action.type) {
     case NEW_RESULTS:
-      return action.results
+      return action.payload
     case CLEAR_RESULTS:
       return []
     default:

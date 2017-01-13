@@ -17,7 +17,6 @@ class ResultsItem extends React.Component {
   }
 
   handleViewProduct() {
-    // this.props.showResultDetails(this.props.item);
     const url = this.props.detailPageUrl
 
     if (window.ga) {
