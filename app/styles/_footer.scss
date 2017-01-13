@@ -3,6 +3,8 @@
   padding: 1.5rem;
   background-color: $fivestar-complement;
   color: $fivestar-primary;
+  max-width: 100%;
+  width: 100%;
 
   .logo-wrapper {
     height: rem-calc(50px);

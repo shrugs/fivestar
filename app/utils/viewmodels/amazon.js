@@ -55,9 +55,9 @@ function image(item) {
 }
 
 function details(item) {
-  if (!item.ItemAttributes || !item.ItemAttributes.Feature) { return [] }
+  if (!item.ItemAttributes || !item.ItemAttributes.Features) { return [] }
 
-  return item.ItemAttributes.Feature.slice(0, 4).map(f => f.slice(0, 75) + (f.length > 75 ? '...' : ''))
+  return item.ItemAttributes.Features.slice(0, 4).map(f => f.slice(0, 75) + (f.length > 75 ? '...' : ''))
 }
 
 function formattedPrice(item) {
@@ -82,7 +82,8 @@ export default buckets => (
       detailPageUrl: detailPageUrl(item),
       image: image(item),
       details: details(item),
-      formattedPrice: formattedPrice(item)
+      formattedPrice: formattedPrice(item),
+      ASIN: item.ASIN
     }))
   }))
 )

@@ -7,12 +7,19 @@
   flex-direction: column;
   justify-content: space-between;
 
-  height: rem-calc(11rem);
+  height: rem-calc(13rem);
   background-size: 80%;
   background-repeat: no-repeat;
   background-position: center center;
 
   margin-bottom: rem-calc(15px);
+
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 5px 4px $medium-gray;
+  }
 
   .view-button {
     margin: 0;
@@ -23,9 +30,11 @@
   }
 
   .price-display {
-    float: right;
     font-size: 0.8rem;
     padding: rem-calc(5px) rem-calc(15px);
     background-color: $fivestar-primary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

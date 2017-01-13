@@ -17,6 +17,11 @@ class ResultsItem extends React.Component {
   }
 
   handleViewProduct() {
+
+    // @TOOD(shrugs) - remove this
+    console.log(JSON.stringify(this.props))
+    return
+
     // this.props.showResultDetails(this.props.item);
     const url = this.props.detailPageUrl
 
@@ -30,9 +35,13 @@ class ResultsItem extends React.Component {
   render() {
     return (
       <Row isColumn>
-        <div className='results-item' style={{ backgroundImage: `url(${this.props.image})` }}>
+        <div
+          className='results-item'
+          style={{ backgroundImage: `url(${this.props.image})` }}
+          onClick={this.handleViewProduct.bind(this)}
+        >
           <div className='price-display-container'>
-            <h4 className='price-display'>{this.props.formattedPrice}</h4>
+            <h4 className='price-display'><b>{this.props.formattedPrice}</b> {this.props.title}</h4>
           </div>
           <Button
             color={Colors.PRIMARY}

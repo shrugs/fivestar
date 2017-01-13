@@ -2,7 +2,7 @@ import React from 'react'
 import { Row } from 'react-foundation'
 
 import ResultsSection from 'components/ResultsSection'
-import ExampleSearchList from 'components/ExampleSearchList'
+import { defaultTopPicks } from 'utils'
 
 export default class ResultsList extends React.Component {
 
@@ -19,23 +19,15 @@ export default class ResultsList extends React.Component {
       forQuery
     } = this.props
 
-    if (!show) {
-      // If we don't want to show the results list,
-      // show some top picks instead.
-      return (
-        <div className='results-list-container'>
-          <ExampleSearchList />
-        </div>
-      )
-    }
-
+    // @TODO(shrugs) - load these from the server
+    const bucketsToRender = show ? buckets : defaultTopPicks
 
     return (
       <Row className='results-list-container' isColumn>
-        {buckets && buckets.filter(b => b.items.length > 0).map(bucket =>
+        {bucketsToRender && bucketsToRender.filter(b => b.items.length > 0).map(bucket =>
           <ResultsSection key={bucket.key} {...bucket} />
         )}
-        {(!buckets || buckets.length < 1) &&
+        {(!bucketsToRender || bucketsToRender.length < 1) &&
           <p className='text-center'>No results for <strong>{forQuery}</strong>.</p>
         }
       </Row>
