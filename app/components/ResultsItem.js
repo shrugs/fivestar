@@ -17,11 +17,6 @@ class ResultsItem extends React.Component {
   }
 
   handleViewProduct() {
-
-    // @TOOD(shrugs) - remove this
-    console.log(JSON.stringify(this.props))
-    return
-
     // this.props.showResultDetails(this.props.item);
     const url = this.props.detailPageUrl
 
