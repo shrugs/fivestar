@@ -15,7 +15,7 @@
     "express": "^3.4.8",
     "foundation-sites": "^6.2.1",
     "http-proxy": "^1.13.3",
-    "lodash": "~2.4.1",
+    "lodash": "~4.17.4",
     "memory-cache": "0.0.5",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
