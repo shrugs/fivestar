@@ -35,7 +35,7 @@ class ResultsItem extends React.Component {
           onClick={this.handleViewProduct.bind(this)}
         >
           <div className='price-display-container'>
-            <h4 className='price-display'>{this.props.formattedPrice}</h4>
+            <h4 className='price-display'><b>{this.props.formattedPrice}</b></h4>
           </div>
           <div className='product-info'>
             <h3>{this.props.title}</h3>
