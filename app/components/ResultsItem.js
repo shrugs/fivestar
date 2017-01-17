@@ -35,16 +35,12 @@ class ResultsItem extends React.Component {
           onClick={this.handleViewProduct.bind(this)}
         >
           <div className='price-display-container'>
-            <h4 className='price-display'><b>{this.props.formattedPrice}</b> {this.props.title}</h4>
+            <h4 className='price-display'>{this.props.formattedPrice}</h4>
           </div>
-          <Button
-            color={Colors.PRIMARY}
-            onClick={this.handleViewProduct.bind(this)}
-            className='view-button'
-            isExpanded
-          >
-            View
-          </Button>
+          <div className='product-info'>
+            <h3>{this.props.title}</h3>
+            <p>by {this.props.brand}</p>
+          </div>
         </div>
       </Row>
     )
