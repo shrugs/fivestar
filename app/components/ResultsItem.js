@@ -28,21 +28,23 @@ class ResultsItem extends React.Component {
 
   render() {
     return (
-      <Row isColumn>
+      <div
+        className='results-item'
+        onClick={this.handleViewProduct.bind(this)}
+      >
         <div
-          className='results-item'
+          className='product-image'
           style={{ backgroundImage: `url(${this.props.image})` }}
-          onClick={this.handleViewProduct.bind(this)}
         >
           <div className='price-display-container'>
             <h4 className='price-display'><b>{this.props.formattedPrice}</b></h4>
           </div>
-          <div className='product-info'>
-            <h3>{this.props.title}</h3>
-            <p>by {this.props.brand}</p>
-          </div>
         </div>
-      </Row>
+        <div className='product-info'>
+          <h3>{this.props.title}</h3>
+          <p>by {this.props.brand}</p>
+        </div>
+      </div>
     )
   }
 }
