@@ -1,0 +1,30 @@
+.section-select-container {
+
+  flex-wrap: nowrap;
+  overflow: scroll;
+
+  .columns {
+    max-width: 40%;
+  }
+
+  .columns:not(:first-child) {
+    padding: 0;
+  }
+
+  .columns:first-child {
+    padding-right: 0;
+  }
+}
+
+.button.section-select {
+  color: $fivestar-complement;
+  background-color: inherit;
+  margin-bottom: 0;
+  font-size: 0.75rem;
+  white-space: nowrap;
+
+  &.active {
+    border-bottom: 2px solid $fivestar-complement;
+  }
+
+}

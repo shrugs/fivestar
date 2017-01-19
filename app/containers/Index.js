@@ -27,7 +27,7 @@ class Index extends React.Component {
         <Row>
           <Column small={12} medium={10} centerOnMedium>
             <Search
-              showFilters={hasResults}
+              showFilters={false}
               params={params}
               // filters={this.props.results.narrowNodes}
             />

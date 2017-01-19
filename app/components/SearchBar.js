@@ -184,7 +184,7 @@ export default class SearchBar extends React.Component {
               </label>
             </Column>
           }
-          {this.props.filters && this.props.filters.filter(f => f.Bin.length > 0).map(f =>
+          {this.props.showFilters && this.props.filters && this.props.filters.filter(f => f.Bin.length > 0).map(f =>
             <Column small={6} medium={6} key={f['@'].NarrowBy}>
               <label>{this.prettyNarrowBy(f['@'].NarrowBy)}
                 <select onChange={e => this.handleFilterChange(f.Bin[0].BinParameter.Name, e.target.value)}>
