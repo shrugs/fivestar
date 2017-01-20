@@ -1,6 +1,6 @@
 .results-item {
   box-shadow: 0px 2px 6px 2px $medium-gray;
-  border-radius: rem-calc(6px);
+  border-radius: rem-calc(2px);
   overflow: hidden;
 
   display: flex;
@@ -19,7 +19,7 @@
 
   .product-image {
     height: 100%;
-    background-size: 80%;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     overflow: hidden;
@@ -32,8 +32,8 @@
     padding-bottom: 5px;
     font-size: 0.7rem;
     letter-spacing: 1px;
-    padding-left: rem-calc(5px);
-    padding-right: rem-calc(5px);
+    padding-left: rem-calc(8px);
+    padding-right: rem-calc(8px);
 
     h3 {
       margin: 0;
@@ -56,7 +56,7 @@
   .price-display {
     float: right;
     font-size: 0.8rem;
-    padding: rem-calc(5px) rem-calc(15px);
+    padding: rem-calc(3px) rem-calc(8px);
     background-color: $fivestar-primary;
   }
 }

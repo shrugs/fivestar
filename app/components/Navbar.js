@@ -8,12 +8,14 @@ import Logo from 'components/Logo'
 export default class Navbar extends Component {
   render() {
     return (
-      <Row className='navbar align-center'>
-        <Column small={12}>
-          <Row className='navbar-inner'>
-            <Logo size={6} />
-            <div>
-              <ShareButtons />
+      <Row className='navbar'>
+        <Column small={12} medium={10} className='medium-centered'>
+          <Row isColumn>
+            <div className='navbar-inner align-center'>
+              <Logo size={6} />
+              <div>
+                <ShareButtons />
+              </div>
             </div>
           </Row>
         </Column>

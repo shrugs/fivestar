@@ -5,6 +5,10 @@
 
   .columns {
     max-width: 40%;
+
+    @include breakpoint(medium) {
+      max-width: 20%;
+    }
   }
 
   .columns:not(:first-child) {

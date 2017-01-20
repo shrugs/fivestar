@@ -106,7 +106,7 @@ export default class SearchBar extends React.Component {
           <div className='input-group search-bar-container'>
             <input
               type='text'
-              className='input-group-field'
+              className='input-group-field search-bar-input'
               placeholder='headphones, school laptop, toaster'
               value={this.state.query}
               onKeyDown={this.handleKeyDown.bind(this)}

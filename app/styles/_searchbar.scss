@@ -1,5 +1,5 @@
 .search-container {
-  margin-top: rem-calc(40px);
+  margin-top: rem-calc(20px);
 
   label {
     font-size: 0.6rem;
@@ -7,7 +7,12 @@
 }
 
 .search-bar-container {
-  box-shadow: 0px 5px 6px -3px $medium-gray;
+  box-shadow: 0px 4px 13px 1px $medium-gray;
   margin-bottom: rem-calc(100px);
+
+  .search-bar-input {
+    box-shadow: none;
+    border: none;
+  }
 }
 

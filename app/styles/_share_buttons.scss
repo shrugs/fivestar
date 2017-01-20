@@ -10,4 +10,10 @@
     margin-left: rem-calc(10px);
     margin-right: rem-calc(10px);
   }
+
+  @include breakpoint(medium) {
+    .SocialMediaShareButton:last-child {
+      margin-right: 0;
+    }
+  }
 }
