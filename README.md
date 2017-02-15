@@ -1,8 +1,8 @@
 # FiveStar
 
-FiveStar finds the best Amazon product in a domain, broken down by budget.
+FiveStar finds the best Amazon product in a domain, broken down by budget. Save yourself literally seconds when you want the best version of a generic product.
 
-It was covered by [TechCrunch](http://techcrunch.com/2014/06/03/fivestar-finds-the-best-products-on-amazon-from-any-category-on-any-budget/)!
+It was covered by [TechCrunch](http://techcrunch.com/2014/06/03/fivestar-finds-the-best-products-on-amazon-from-any-category-on-any-budget/)
 
 ## Install
 
