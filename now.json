@@ -1,6 +1,11 @@
 {
   "version": 2,
   "name": "fivestar",
+  "build": {
+    "env": {
+      "GA_TRACKING_ID": "@fivestar-ga-tracking-id"
+    }
+  },
   "env": {
     "PAAPI_ACCESS_KEY": "@fivestar-paapi-access-key",
     "PAAPI_SECRET_KEY": "@fivestar-paapi-secret-key",

@@ -6,13 +6,16 @@ import { useAsync } from 'react-async';
 import fetch from 'isomorphic-unfetch';
 import FlipMove from 'react-flip-move';
 import noop from 'lodash/noop';
-import { META_NAME, POPULAR_TERMS } from '../lib/constants';
+import { META_NAME, POPULAR_TERMS, SHARE_TEXT } from '../lib/constants';
 import Loading from '../icons/Loading';
 import { SearchResponse } from '../lib/types';
 import ReactGA from 'react-ga';
+import { buildFacebookShareUrl, buildTwitterShareUrl } from '../lib/shareUrls';
 
 const formatUSD = (price: number) => `$${(price / 100).toFixed(2)}`;
 const queryIsValid = (query: string) => query.length > 0;
+const twitterShareUrl = buildTwitterShareUrl(SHARE_TEXT);
+const facebookShareUrl = buildFacebookShareUrl(SHARE_TEXT);
 
 const fetchSearch = async ({ query }) => {
   if (!queryIsValid(query)) return undefined;
@@ -53,6 +56,7 @@ function Home() {
   }, [query, reload]);
   const onSearchChange = useCallback(e => setQuery(e.target.value), []);
   const onSearchKeydown = useCallback(e => e.key === 'Enter' && handleSearch(), [handleSearch]);
+  const handleClearSearch = useCallback(() => setQuery(''), []);
 
   const searchFor = useCallback(
     (query: string) => () => {
@@ -77,12 +81,16 @@ function Home() {
 
       <div className="flex-grow flex flex-col px-2 py-4 w-full max-w-6xl mx-auto">
         <header className="h-12 flex flex-row justify-between items-center">
-          <img src="/fivestar_logo_black_2x.png" className="h-full"></img>
+          <img
+            src="/fivestar_logo_black_2x.png"
+            className="h-full cursor-pointer"
+            onClick={handleClearSearch}
+          ></img>
           <div className="flex flex-row items-center">
-            <a href="https://google.com" rel="noopener noreferrer" target="_blank">
+            <a href={facebookShareUrl} rel="noopener noreferrer" target="_blank">
               <Facebook className="ml-2 rounded-full hover:shadow focus:shadow cursor-pointer" />
             </a>
-            <a href="https://google.com" rel="noopener noreferrer" target="_blank">
+            <a href={twitterShareUrl} rel="noopener noreferrer" target="_blank">
               <Twitter className="ml-2 rounded-full hover:shadow focus:shadow cursor-pointer" />
             </a>
           </div>
@@ -201,7 +209,7 @@ function Home() {
             searching directly on Amazon. Don't spend minutes reading reviews and deciding between
             products—find what you're looking for with confidence.
           </p>
-          <p>&copy; {currentYear}, Fivestar.</p>
+          <p>&copy; {currentYear}, Fivestar — est. 2015</p>
         </div>
       </footer>
 
