@@ -238,6 +238,7 @@ function Home() {
             searching directly on Amazon. Don't spend minutes reading reviews and deciding between
             products—find what you're looking for with confidence.
           </p>
+          <p className="mb-1">Fivestar searches the USA www.amazon.com marketplace in USD.</p>
           <p>&copy; {currentYear}, Fivestar — est. 2015</p>
         </div>
       </footer>
