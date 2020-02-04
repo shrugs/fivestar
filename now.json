@@ -2,8 +2,8 @@
   "version": 2,
   "name": "fivestar",
   "env": {
-    "PAAPI_ACCESS_KEY": "@fivestar-pappi-access-key",
-    "PAAPI_SECRET_KEY": "@fivestar-pappi-secret-key",
+    "PAAPI_ACCESS_KEY": "@fivestar-paapi-access-key",
+    "PAAPI_SECRET_KEY": "@fivestar-paapi-secret-key",
     "PAAPI_PARTNER_TAG": "@fivestar-paapi-partner-tag"
   }
 }
