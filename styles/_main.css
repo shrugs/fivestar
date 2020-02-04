@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+
+/* purgecss start ignore */
+@import 'tailwindcss/base';
+/* purgecss end ignore */
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
