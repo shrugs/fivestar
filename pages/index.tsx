@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useMemo } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import Head from 'next/head';
 import Facebook from '../icons/Facebook';
 import Twitter from '../icons/Twitter';
@@ -9,6 +9,7 @@ import noop from 'lodash/noop';
 import { META_NAME, POPULAR_TERMS } from '../lib/constants';
 import Loading from '../icons/Loading';
 import { SearchResponse } from '../lib/types';
+import ReactGA from 'react-ga';
 
 const formatUSD = (price: number) => `$${(price / 100).toFixed(2)}`;
 const queryIsValid = (query: string) => query.length > 0;
@@ -40,7 +41,16 @@ function Home() {
   const showPending = isPending;
   const showError = error && !isPending;
 
-  const handleSearch = useCallback(() => reload(), [reload]);
+  const handleSearch = useCallback(() => {
+    ReactGA.event({
+      category: 'Search',
+      action: 'search',
+      label: query,
+    });
+    1;
+
+    reload();
+  }, [query, reload]);
   const onSearchChange = useCallback(e => setQuery(e.target.value), []);
   const onSearchKeydown = useCallback(e => e.key === 'Enter' && handleSearch(), [handleSearch]);
 

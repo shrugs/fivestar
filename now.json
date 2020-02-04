@@ -4,6 +4,7 @@
   "env": {
     "PAAPI_ACCESS_KEY": "@fivestar-paapi-access-key",
     "PAAPI_SECRET_KEY": "@fivestar-paapi-secret-key",
-    "PAAPI_PARTNER_TAG": "@fivestar-paapi-partner-tag"
+    "PAAPI_PARTNER_TAG": "@fivestar-paapi-partner-tag",
+    "GA_TRACKING_ID": "@fivestar-ga-tracking-id"
   }
 }

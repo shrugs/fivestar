@@ -1,9 +1,14 @@
 import React from 'react';
 import { AppProps } from 'next/app';
+import ReactGA from 'react-ga';
+import Head from 'next/head';
+import Router from 'next/router';
 
 import '../styles/_main.css';
-import Head from 'next/head';
 import { HOST_URL, META_DESCRIPTION, META_NAME, TWITTER_AUTHOR } from '../lib/constants';
+
+ReactGA.initialize(process.env.GA_TRACKING_ID);
+Router.events.on('routeChangeComplete', url => ReactGA.pageview(url));
 
 const absoluteUri = (path: string) => `${HOST_URL}${path}`;
 
