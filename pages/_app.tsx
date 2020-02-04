@@ -14,7 +14,7 @@ const absoluteUri = (path: string) => `${HOST_URL}${path}`;
 function Fivestar({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // register initial pageview on browser mount
-    ReactGA.pageview(window.location.href);
+    ReactGA.pageview(window.location.pathname);
     // register future route changes
     Router.events.on('routeChangeComplete', url => ReactGA.pageview(url));
   }, []);

@@ -101,7 +101,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const request = buildSearchItemsRequest(query);
-  const data = await searchItems(request);
+  let data: any;
+  try {
+    data = await searchItems(request);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
   const searchUrl: string = get(data, ['SearchResult', 'SearchURL']);
   const Items: any[] = get(data, ['SearchResult', 'Items'], []);
 

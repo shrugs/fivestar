@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo } from 'react';
+import React, { useCallback, useMemo, useEffect } from 'react';
 import Head from 'next/head';
 import Facebook from '../icons/Facebook';
 import Twitter from '../icons/Twitter';
@@ -11,6 +11,8 @@ import Loading from '../icons/Loading';
 import { SearchResponse } from '../lib/types';
 import ReactGA from 'react-ga';
 import { buildFacebookShareUrl, buildTwitterShareUrl } from '../lib/shareUrls';
+import useQueryParams from '../lib/useQueryParams';
+import { useDebouncedCallback } from 'use-debounce';
 
 const formatUSD = (price: number) => `$${(price / 100).toFixed(2)}`;
 const queryIsValid = (query: string) => query.length > 0;
@@ -28,35 +30,42 @@ const fetchSearch = async ({ query }) => {
 // TODO: social link generation
 
 function Home() {
-  const [query, setQuery] = useState('');
+  const [{ q }, setParams] = useQueryParams();
+  const query = q || ''; // coerce undefined to empty string
+
+  const setQuery = useCallback((query: string) => setParams({ q: query }), [setParams]);
   const isValidQuery = queryIsValid(query);
   const queryIsEmpty = !isValidQuery; // todo:
   const canSearch = isValidQuery;
 
-  const { data, error, isPending, isFulfilled, reload } = useAsync<SearchResponse>({
+  const { data, error, isPending, isFulfilled, reload, setData } = useAsync<SearchResponse>({
     promiseFn: fetchSearch,
     query,
     debugLabel: '/api/search',
   });
 
   const showResults = !isPending && isFulfilled && data && isValidQuery;
-  const showPopularTerms = queryIsEmpty;
+  const showPopularTerms = queryIsEmpty || (isValidQuery && !showResults);
   const showPending = isPending;
   const showError = error && !isPending;
 
-  const handleSearch = useCallback(() => {
-    ReactGA.event({
-      category: 'Search',
-      action: 'search',
-      label: query,
-    });
-    1;
+  const [handleSearch] = useDebouncedCallback(
+    useCallback(() => {
+      ReactGA.event({
+        category: 'Search',
+        action: 'search',
+        label: query,
+      });
+      1;
 
-    reload();
-  }, [query, reload]);
-  const onSearchChange = useCallback(e => setQuery(e.target.value), []);
+      reload();
+    }, [query, reload]),
+    250,
+  );
+
+  const onSearchChange = useCallback(e => setQuery(e.target.value), [setQuery]);
   const onSearchKeydown = useCallback(e => e.key === 'Enter' && handleSearch(), [handleSearch]);
-  const handleClearSearch = useCallback(() => setQuery(''), []);
+  const handleClearSearch = useCallback(() => setQuery(''), [setQuery]);
 
   const searchFor = useCallback(
     (query: string) => () => {
@@ -64,10 +73,25 @@ function Home() {
       // wait for setState to flush...
       setTimeout(handleSearch, 0);
     },
-    [handleSearch],
+    [handleSearch, setQuery],
   );
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
+
+  useEffect(() => {
+    // if we can search on initial mount, use existing query params
+    if (canSearch) {
+      handleSearch();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    // if query is empty, nuke search state
+    if (queryIsEmpty) {
+      setData(undefined);
+    }
+  }, [queryIsEmpty, setData]);
 
   return (
     <>
@@ -136,7 +160,12 @@ function Home() {
           </FlipMove>
 
           <FlipMove className="flex-grow flex flex-col">
-            {showError && <p className="text-center text-red-600 font-semibold">{error.message}</p>}
+            {showError && (
+              <p className="text-center text-red-600 font-semibold">
+                {error.message} — Too many people are using {META_NAME} at the moment. Try again in
+                a few minutes.
+              </p>
+            )}
 
             {showPending && (
               <div className="flex-grow flex flex-col justify-center items-center">
@@ -164,7 +193,7 @@ function Home() {
                           href={item.detailPageUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="cursor-pointer block w-full md:w-32 md:mr-4 lg:w-64"
+                          className="cursor-pointer block w-full md:w-64 md:mr-4"
                         >
                           <div className="rounded shadow hover:shadow-md flex flex-col mb-4">
                             <div
@@ -221,5 +250,8 @@ function Home() {
     </>
   );
 }
+
+// noop getInitialProps so that we opt-out of static rendering and we can SSR parse query parameters
+Home.getInitialProps = async () => ({});
 
 export default Home;
