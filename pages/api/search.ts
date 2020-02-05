@@ -110,7 +110,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const searchUrl: string = get(data, ['SearchResult', 'SearchURL']);
   const Items: any[] = get(data, ['SearchResult', 'Items'], []);
 
-  const bucketsByPrice = Items.reduce<Record<number, any[]>>((memo, item) => {
+  const bucketsByPrice = Items.reduce<Record<number, Item[]>>((memo, item) => {
     try {
       const itemPrice = getPrice(item);
       // find the correct bucket given the price

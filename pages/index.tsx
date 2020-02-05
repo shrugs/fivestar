@@ -104,7 +104,7 @@ function Home() {
       </Head>
 
       <div className="flex-grow flex flex-col px-2 py-4 w-full max-w-6xl mx-auto">
-        <header className="h-12 flex flex-row justify-between items-center">
+        <header className="h-12 mx-4 flex flex-row justify-between items-center">
           <img
             src="/fivestar_logo_black_2x.png"
             className="h-full cursor-pointer"
@@ -112,19 +112,19 @@ function Home() {
           ></img>
           <div className="flex flex-row items-center">
             <a href={facebookShareUrl} rel="noopener noreferrer" target="_blank">
-              <Facebook className="ml-2 rounded-full hover:shadow focus:shadow cursor-pointer" />
+              <Facebook className="ml-4 rounded-full hover:shadow focus:shadow cursor-pointer" />
             </a>
             <a href={twitterShareUrl} rel="noopener noreferrer" target="_blank">
-              <Twitter className="ml-2 rounded-full hover:shadow focus:shadow cursor-pointer" />
+              <Twitter className="ml-4 rounded-full hover:shadow focus:shadow cursor-pointer" />
             </a>
           </div>
         </header>
 
-        <main className="flex-grow mt-8 flex flex-col md:w-2/3 md:mx-auto">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center">
+        <main className="flex-grow mt-12 flex flex-col md:w-2/3 md:mx-auto">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center">
             The <strong>Secret</strong> Amazon Search
           </h2>
-          <h3 className="text-xs sm:text-base text-gray-600 text-center mb-8">
+          <h3 className="mb-8 text-xs sm:text-base text-gray-600 text-center">
             Find the best products on Amazon with <strong>confidence</strong>.
           </h3>
 
@@ -183,8 +183,16 @@ function Home() {
 
                 return (
                   <div key={bucket.minPrice} className="flex flex-col">
-                    <h4 className="text-lg font-light my-4">
-                      {maxPrice ? <>&lt; {formatUSD(maxPrice)}</> : <>{formatUSD(minPrice)} +</>}
+                    <h4 className="text-2xl font-light my-4">
+                      {maxPrice ? (
+                        <>
+                          👇 <strong>{formatUSD(maxPrice)}</strong> and under
+                        </>
+                      ) : (
+                        <>
+                          💸 over <strong>{formatUSD(minPrice)}</strong>
+                        </>
+                      )}
                     </h4>
                     <div className="flex flex-row flex-wrap">
                       {bucket.items.map(item => (
