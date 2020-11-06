@@ -144,6 +144,7 @@ function Home() {
               placeholder="What do you need right now?"
               onChange={onSearchChange}
               onKeyDown={canSearch ? onSearchKeydown : noop}
+              autoFocus
             ></input>
             <button
               className="uppercase hover:bg-gray-100 focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none text-sm p-4"
@@ -248,6 +249,9 @@ function Home() {
 
       <footer className="bg-gray-700 px-2 py-4 mt-8 text-white flex flex-col text-xs">
         <div className="md:w-2/3 md:mx-auto">
+          <p className="mb-1 font-bold">
+            Fivestar is an Amazon Associate, and all links to Amazon are referrals.
+          </p>
           <p className="mb-1">
             Fivestar's search algorithm finds the best products by first searching for relevancy and{' '}
             <i>then</i> aggregating by average customer reviews. It's smarter and faster than
