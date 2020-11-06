@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Facebook from '../icons/Facebook';
 import Twitter from '../icons/Twitter';
 import { useAsync } from 'react-async';
-import fetch from 'isomorphic-unfetch';
 import FlipMove from 'react-flip-move';
 import noop from 'lodash/noop';
 import { META_NAME, POPULAR_TERMS, SHARE_TEXT } from '../lib/constants';
@@ -23,8 +22,17 @@ const fetchSearch = async ({ query }) => {
   if (!queryIsValid(query)) return undefined;
 
   const res = await fetch(`/api/search?${new URLSearchParams({ q: query })}`);
-  if (!res.ok) throw new Error(res.statusText);
-  return await res.json();
+  let data;
+  try {
+    data = await res.json();
+  } catch (error) {
+    throw new Error(res.statusText);
+  }
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+  return data;
 };
 
 // TODO: social link generation

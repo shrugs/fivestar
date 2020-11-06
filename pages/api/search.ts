@@ -105,7 +105,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     data = await searchItems(request);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: `Error from Amazon: ${error.message}` });
   }
   const searchUrl: string = get(data, ['SearchResult', 'SearchURL']);
   const Items: any[] = get(data, ['SearchResult', 'Items'], []);

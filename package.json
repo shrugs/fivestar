@@ -8,12 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "isomorphic-unfetch": "^3.0.0",
-    "next": "9.3.2",
+    "next": "10.0.1",
     "paapi5-nodejs-sdk": "^1.0.1",
-    "react": "16.12.0",
+    "react": "17.0.1",
     "react-async": "^10.0.0",
-    "react-dom": "16.12.0",
+    "react-dom": "17.0.1",
     "react-flip-move": "^3.0.4",
     "react-ga": "^2.7.0",
     "use-debounce": "^3.3.0"
