@@ -118,14 +118,14 @@ function Home() {
             className="h-full cursor-pointer"
             onClick={handleClearSearch}
           ></img>
-          <div className="flex flex-row items-center">
+          {/* <div className="flex flex-row items-center">
             <a href={facebookShareUrl} rel="noopener noreferrer" target="_blank">
               <Facebook className="ml-4 rounded-full hover:shadow focus:shadow cursor-pointer" />
             </a>
             <a href={twitterShareUrl} rel="noopener noreferrer" target="_blank">
               <Twitter className="ml-4 rounded-full hover:shadow focus:shadow cursor-pointer" />
             </a>
-          </div>
+          </div> */}
         </header>
 
         <main className="flex-grow mt-12 flex flex-col md:w-2/3 md:mx-auto">
@@ -136,7 +136,11 @@ function Home() {
             Find the best products on Amazon with <strong>confidence</strong>.
           </h3>
 
-          <div className="flex flex-row shadow rounded">
+          <h2 className="text-center text-red-500">
+            Fivestar has been shut down by Amazon, thanks for using it the past 5 years!
+          </h2>
+
+          {/* <div className="flex flex-row shadow rounded">
             <input
               className="flex-grow py-4 pl-4 rounded-l"
               type="text"
@@ -153,9 +157,9 @@ function Home() {
             >
               search
             </button>
-          </div>
+          </div> */}
 
-          <FlipMove className="my-4 flex flex-row flex-wrap">
+          {/* <FlipMove className="my-4 flex flex-row flex-wrap">
             {showPopularTerms &&
               POPULAR_TERMS.map(term => (
                 <div
@@ -166,7 +170,7 @@ function Home() {
                   {term}
                 </div>
               ))}
-          </FlipMove>
+          </FlipMove> */}
 
           <FlipMove className="flex-grow flex flex-col">
             {showError && (
@@ -271,8 +275,5 @@ function Home() {
     </>
   );
 }
-
-// noop getInitialProps so that we opt-out of static rendering and we can SSR parse query parameters
-Home.getInitialProps = async () => ({});
 
 export default Home;
